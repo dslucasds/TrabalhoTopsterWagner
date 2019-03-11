@@ -1,6 +1,7 @@
 package Telas;
 
 import br.SisAgenda.PainelCadastColab;
+import br.SisAgenda.PainelCadastEquipe;
 import java.awt.CardLayout;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 
@@ -13,8 +14,10 @@ public class FramePrincipal extends javax.swing.JFrame {
         initComponents();
         
         PainelCadastColab cadColab = new PainelCadastColab();
+        PainelCadastEquipe cadEquipe = new PainelCadastEquipe();
         
         painelPrincipal.add(cadColab, "PainelCadastColab");
+        painelPrincipal.add(cadEquipe, "PainelCadastEquipe");
         
         CardLayout cl = (CardLayout) painelPrincipal.getLayout();
         cl.show(painelPrincipal, "telaPadrao");
@@ -41,7 +44,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jCadastroEquipe = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
@@ -93,13 +96,13 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         jMenu2.setText("Equipes");
 
-        jMenuItem1.setText("Cadastrar Equipe");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jCadastroEquipe.setText("Cadastrar Equipe");
+        jCadastroEquipe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jCadastroEquipeActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem1);
+        jMenu2.add(jCadastroEquipe);
 
         jMenuItem5.setText("Editar Equipe");
         jMenu2.add(jMenuItem5);
@@ -180,9 +183,10 @@ public class FramePrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    private void jCadastroEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastroEquipeActionPerformed
+      CardLayout cl = (CardLayout) painelPrincipal.getLayout();
+        cl.show(painelPrincipal, "PainelCadastEquipe");   
+    }//GEN-LAST:event_jCadastroEquipeActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         // TODO add your handling code here:
@@ -228,6 +232,7 @@ public class FramePrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem jCadastroEquipe;
     private javax.swing.JMenu jJanelaColab;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -236,7 +241,6 @@ public class FramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuCadCol;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
