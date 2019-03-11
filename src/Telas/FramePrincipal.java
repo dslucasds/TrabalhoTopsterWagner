@@ -1,4 +1,3 @@
-
 package Telas;
 
 import br.SisAgenda.PainelCadastColab;
@@ -43,6 +42,16 @@ public class FramePrincipal extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,12 +91,6 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jJanelaColab);
 
-<<<<<<< HEAD
-        jMenu2.setText("Cadastrar equipe");
-
-        jMenuItem1.setText("jMenuItem1");
-        jMenu2.add(jMenuItem1);
-=======
         jMenu2.setText("Equipes");
 
         jMenuItem1.setText("Cadastrar Equipe");
@@ -111,7 +114,6 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         jMenuItem7.setText("Listar Equipe");
         jMenu2.add(jMenuItem7);
->>>>>>> origin/master
 
         jMenuBar1.add(jMenu2);
 
@@ -149,6 +151,13 @@ public class FramePrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(painelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(jLabel3)))
+                .addGap(29, 29, 29))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,17 +237,9 @@ public class FramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuCadCol;
     private javax.swing.JMenuItem jMenuItem1;
-<<<<<<< HEAD
-            .addComponent(painelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
-=======
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(painelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(jLabel3)))
-                .addGap(29, 29, 29))
->>>>>>> origin/master
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
@@ -250,10 +251,3 @@ public class FramePrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel painelPrincipal;
     // End of variables declaration//GEN-END:variables
 }
-<<<<<<< HEAD
-
-=======
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
->>>>>>> origin/master

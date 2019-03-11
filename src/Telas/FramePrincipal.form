@@ -39,14 +39,11 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Cadastrar equipe"/>
+            <Property name="text" type="java.lang.String" value="Equipes"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
               <Properties>
-<<<<<<< HEAD
-                <Property name="text" type="java.lang.String" value="jMenuItem1"/>
-=======
                 <Property name="text" type="java.lang.String" value="Cadastrar Equipe"/>
               </Properties>
               <Events>
@@ -111,7 +108,6 @@
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem12">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Editar Tarefas"/>
->>>>>>> origin/master
               </Properties>
             </MenuItem>
           </SubComponents>
@@ -142,9 +138,6 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-<<<<<<< HEAD
-          <Component id="painelPrincipal" alignment="0" pref="178" max="32767" attributes="0"/>
-=======
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="painelPrincipal" min="-2" pref="345" max="-2" attributes="0"/>
@@ -155,7 +148,6 @@
               </Group>
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
           </Group>
->>>>>>> origin/master
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
