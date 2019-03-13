@@ -1,5 +1,6 @@
 package Telas;
 
+import br.SisAgenda.ListagemEquip;
 import br.SisAgenda.PainelCadastColab;
 import br.SisAgenda.PainelCadastEquipe;
 import java.awt.CardLayout;
@@ -7,17 +8,18 @@ import static java.awt.Frame.MAXIMIZED_BOTH;
 
 public class FramePrincipal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FramePrincipal
-     */
+    
     public FramePrincipal() {
         initComponents();
         
         PainelCadastColab cadColab = new PainelCadastColab();
         PainelCadastEquipe cadEquipe = new PainelCadastEquipe();
+        ListagemEquip lisEquip = new ListagemEquip();
+        
         
         painelPrincipal.add(cadColab, "PainelCadastColab");
         painelPrincipal.add(cadEquipe, "PainelCadastEquipe");
+        painelPrincipal.add(lisEquip, "ListagemEquip");
         
         CardLayout cl = (CardLayout) painelPrincipal.getLayout();
         cl.show(painelPrincipal, "telaPadrao");
@@ -47,7 +49,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         jCadastroEquipe = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        jListarEquipe = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
@@ -115,8 +117,13 @@ public class FramePrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem6);
 
-        jMenuItem7.setText("Listar Equipe");
-        jMenu2.add(jMenuItem7);
+        jListarEquipe.setText("Listar Equipe");
+        jListarEquipe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jListarEquipeActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jListarEquipe);
 
         jMenuBar1.add(jMenu2);
 
@@ -192,6 +199,11 @@ public class FramePrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
+    private void jListarEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jListarEquipeActionPerformed
+        CardLayout cl = (CardLayout) painelPrincipal.getLayout();
+        cl.show(painelPrincipal, "ListagemEquip");
+    }//GEN-LAST:event_jListarEquipeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -232,6 +244,7 @@ public class FramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jJanelaColab;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JMenuItem jListarEquipe;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -245,7 +258,6 @@ public class FramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel painelPrincipal;
