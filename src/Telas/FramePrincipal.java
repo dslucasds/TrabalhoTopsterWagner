@@ -3,28 +3,37 @@ package Telas;
 import br.SisAgenda.ListagemEquip;
 import br.SisAgenda.PainelCadastColab;
 import br.SisAgenda.PainelCadastEquipe;
+import br.SisAgenda.PainelCadastTarefa;
 import java.awt.CardLayout;
 import static java.awt.Frame.MAXIMIZED_BOTH;
+import javax.swing.JFrame;
 
 public class FramePrincipal extends javax.swing.JFrame {
 
-    
+    /**
+     * Creates new form FramePrincipal
+     */
     public FramePrincipal() {
         initComponents();
-        
+
         PainelCadastColab cadColab = new PainelCadastColab();
         PainelCadastEquipe cadEquipe = new PainelCadastEquipe();
+
         ListagemEquip lisEquip = new ListagemEquip();
-        
-        
+
+        PainelCadastTarefa cadTaref = new PainelCadastTarefa();
+
         painelPrincipal.add(cadColab, "PainelCadastColab");
         painelPrincipal.add(cadEquipe, "PainelCadastEquipe");
+
         painelPrincipal.add(lisEquip, "ListagemEquip");
-        
+
+        painelPrincipal.add(cadTaref, "PainelCadastTarefa");
+
         CardLayout cl = (CardLayout) painelPrincipal.getLayout();
         cl.show(painelPrincipal, "telaPadrao");
-        
-        //this.setExtendedState(MAXIMIZED_BOTH);
+
+        this.setExtendedState(MAXIMIZED_BOTH);
     }
 
     /**
@@ -38,7 +47,6 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         painelPrincipal = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jJanelaColab = new javax.swing.JMenu();
         jMenuCadCol = new javax.swing.JMenuItem();
@@ -54,7 +62,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem10 = new javax.swing.JMenuItem();
+        jAddTarefa = new javax.swing.JMenuItem();
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
 
@@ -65,10 +73,6 @@ public class FramePrincipal extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/SisAgenda/imgs/hqdefault.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
         painelPrincipal.add(jLabel2, "card2");
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel3.setText("Pfvr da um 10 pra gente ai <3");
 
         jJanelaColab.setText("Colaborador");
 
@@ -144,8 +148,13 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         jMenu3.setText("Tarefas");
 
-        jMenuItem10.setText("Adicionar Tarefas");
-        jMenu3.add(jMenuItem10);
+        jAddTarefa.setText("Adicionar Tarefas");
+        jAddTarefa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAddTarefaActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jAddTarefa);
 
         jMenuItem11.setText("Eliminar Tarefas");
         jMenu3.add(jMenuItem11);
@@ -161,17 +170,15 @@ public class FramePrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(jLabel3))
+                .addComponent(painelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(79, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(painelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37))
         );
 
         pack();
@@ -179,7 +186,7 @@ public class FramePrincipal extends javax.swing.JFrame {
 
     private void jMenuCadColActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCadColActionPerformed
         CardLayout cl = (CardLayout) painelPrincipal.getLayout();
-        cl.show(painelPrincipal, "PainelCadastColab");    
+        cl.show(painelPrincipal, "PainelCadastColab");
     }//GEN-LAST:event_jMenuCadColActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -187,8 +194,8 @@ public class FramePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jCadastroEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastroEquipeActionPerformed
-      CardLayout cl = (CardLayout) painelPrincipal.getLayout();
-        cl.show(painelPrincipal, "PainelCadastEquipe");   
+        CardLayout cl = (CardLayout) painelPrincipal.getLayout();
+        cl.show(painelPrincipal, "PainelCadastEquipe");
     }//GEN-LAST:event_jCadastroEquipeActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
@@ -198,6 +205,11 @@ public class FramePrincipal extends javax.swing.JFrame {
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jAddTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddTarefaActionPerformed
+        //CardLayout cl = (CardLayout) painelPrincipal.getLayout();
+        //cl.show(painelPrincipal, "PainelCadastTarefa");
+    }//GEN-LAST:event_jAddTarefaActionPerformed
 
     private void jListarEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jListarEquipeActionPerformed
         CardLayout cl = (CardLayout) painelPrincipal.getLayout();
@@ -229,7 +241,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FramePrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
+        //</editor-fold
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -240,6 +252,7 @@ public class FramePrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem jAddTarefa;
     private javax.swing.JMenuItem jCadastroEquipe;
     private javax.swing.JMenu jJanelaColab;
     private javax.swing.JLabel jLabel2;
@@ -250,7 +263,6 @@ public class FramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuCadCol;
-    private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem2;
