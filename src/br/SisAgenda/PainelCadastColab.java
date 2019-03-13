@@ -17,7 +17,8 @@ public class PainelCadastColab extends javax.swing.JPanel {
     public PainelCadastColab() {
         initComponents();
         ComboBoxTipoColab.addItem("Administrador");
-        ComboBoxTipoColab.addItem("Usario");        
+        ComboBoxTipoColab.addItem("Usario");
+        
     }
 
     /**
