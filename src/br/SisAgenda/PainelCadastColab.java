@@ -232,6 +232,10 @@ public class PainelCadastColab extends javax.swing.JPanel {
         //Col.setTipoUsuario()
         Col.setNomeColaborador(jNomeColab.getText());
         Col.setEnderecoColaborador(jEndColab.getText());
+        Col.setBairroColaborador(jBairroColab.getText());
+        Col.setEmailColaborador(jEmailColab.getText());
+        Col.setLoginColaborador(jLoginColab.getText());
+        Col.setSenhaColaborador(jSenhaColab.getText());
     }//GEN-LAST:event_jButtonCadastActionPerformed
 
 

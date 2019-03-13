@@ -50,21 +50,16 @@ public class FramePrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jJanelaColab = new javax.swing.JMenu();
         jMenuCadCol = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        jListarColab = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jCadastroEquipe = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
         jListarEquipe = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jAddTarefa = new javax.swing.JMenuItem();
-        jMenuItem11 = new javax.swing.JMenuItem();
-        jMenuItem12 = new javax.swing.JMenuItem();
+        ListarTarefas = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jAgendaColab = new javax.swing.JMenuItem();
+        jAgendaEquipes = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,19 +79,13 @@ public class FramePrincipal extends javax.swing.JFrame {
         });
         jJanelaColab.add(jMenuCadCol);
 
-        jMenuItem2.setText("Editar Colaborador");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jListarColab.setText("Listar Colaboradores");
+        jListarColab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jListarColabActionPerformed(evt);
             }
         });
-        jJanelaColab.add(jMenuItem2);
-
-        jMenuItem3.setText("Eliminar Colaborador");
-        jJanelaColab.add(jMenuItem3);
-
-        jMenuItem4.setText("Listar Colaboradores");
-        jJanelaColab.add(jMenuItem4);
+        jJanelaColab.add(jListarColab);
 
         jMenuBar1.add(jJanelaColab);
 
@@ -110,17 +99,6 @@ public class FramePrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(jCadastroEquipe);
 
-        jMenuItem5.setText("Editar Equipe");
-        jMenu2.add(jMenuItem5);
-
-        jMenuItem6.setText("Eliminar Equipe");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem6);
-
         jListarEquipe.setText("Listar Equipe");
         jListarEquipe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,21 +108,6 @@ public class FramePrincipal extends javax.swing.JFrame {
         jMenu2.add(jListarEquipe);
 
         jMenuBar1.add(jMenu2);
-
-        jMenu1.setText("Agenda");
-
-        jMenuItem8.setText("Colaboradores");
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem8);
-
-        jMenuItem9.setText("Equipes");
-        jMenu1.add(jMenuItem9);
-
-        jMenuBar1.add(jMenu1);
 
         jMenu3.setText("Tarefas");
 
@@ -156,13 +119,25 @@ public class FramePrincipal extends javax.swing.JFrame {
         });
         jMenu3.add(jAddTarefa);
 
-        jMenuItem11.setText("Eliminar Tarefas");
-        jMenu3.add(jMenuItem11);
-
-        jMenuItem12.setText("Editar Tarefas");
-        jMenu3.add(jMenuItem12);
+        ListarTarefas.setText("Listar Tarefas");
+        jMenu3.add(ListarTarefas);
 
         jMenuBar1.add(jMenu3);
+
+        jMenu1.setText("Agenda");
+
+        jAgendaColab.setText("Colaboradores");
+        jAgendaColab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAgendaColabActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jAgendaColab);
+
+        jAgendaEquipes.setText("Equipes");
+        jMenu1.add(jAgendaEquipes);
+
+        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -189,22 +164,9 @@ public class FramePrincipal extends javax.swing.JFrame {
         cl.show(painelPrincipal, "PainelCadastColab");
     }//GEN-LAST:event_jMenuCadColActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jAgendaColabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAgendaColabActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void jCadastroEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastroEquipeActionPerformed
-        CardLayout cl = (CardLayout) painelPrincipal.getLayout();
-        cl.show(painelPrincipal, "PainelCadastEquipe");
-    }//GEN-LAST:event_jCadastroEquipeActionPerformed
-
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
-
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
+    }//GEN-LAST:event_jAgendaColabActionPerformed
 
     private void jAddTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddTarefaActionPerformed
         //CardLayout cl = (CardLayout) painelPrincipal.getLayout();
@@ -215,6 +177,15 @@ public class FramePrincipal extends javax.swing.JFrame {
         CardLayout cl = (CardLayout) painelPrincipal.getLayout();
         cl.show(painelPrincipal, "ListagemEquip");
     }//GEN-LAST:event_jListarEquipeActionPerformed
+
+    private void jCadastroEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastroEquipeActionPerformed
+        CardLayout cl = (CardLayout) painelPrincipal.getLayout();
+        cl.show(painelPrincipal, "PainelCadastEquipe");
+    }//GEN-LAST:event_jCadastroEquipeActionPerformed
+
+    private void jListarColabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jListarColabActionPerformed
+        
+    }//GEN-LAST:event_jListarColabActionPerformed
 
     /**
      * @param args the command line arguments
@@ -252,26 +223,20 @@ public class FramePrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem ListarTarefas;
     private javax.swing.JMenuItem jAddTarefa;
+    private javax.swing.JMenuItem jAgendaColab;
+    private javax.swing.JMenuItem jAgendaEquipes;
     private javax.swing.JMenuItem jCadastroEquipe;
     private javax.swing.JMenu jJanelaColab;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JMenuItem jListarColab;
     private javax.swing.JMenuItem jListarEquipe;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuCadCol;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel painelPrincipal;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,6 +1,7 @@
 package br.SisAgenda.modelo;
 
 public class Colaborador {
+    private int CodColab;
     private String TipoUsuario;
     private String NomeColaborador;
     private String EnderecoColaborador;
@@ -8,6 +9,14 @@ public class Colaborador {
     private String EmailColaborador;
     private String LoginColaborador;
     private String SenhaColaborador;
+
+    public int getIdDoColab() {
+        return CodColab;
+    }
+
+    public void setIdDoColab(int IdDoColab) {
+        this.CodColab = IdDoColab;
+    }
 
     public String getTipoUsuario() {
         return TipoUsuario;
