@@ -6,6 +6,7 @@
 package br.SisAgenda;
 
 import br.SisAgenda.modelo.Tarefa;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -61,10 +62,6 @@ public class PainelCadastTarefa extends javax.swing.JPanel {
 
         lblTituloAdicionarTarefa.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblTituloAdicionarTarefa.setText("ADICIONAR TAREFA");
-
-        cpTitulo.setText("jTextField1");
-
-        cpDescricao.setText("jTextField2");
 
         try {
             cpDataInicial.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/#### ##:##:##")));
@@ -143,6 +140,15 @@ public class PainelCadastTarefa extends javax.swing.JPanel {
         
         tr.setTitAge(cpTitulo.getText());
         tr.setDesAge(cpDescricao.getText());
+        
+        String dataCri = cpDataInicial.getText();
+        dataCri = dataCri.replaceAll("/" , "");
+        dataCri = dataCri.replaceAll(":" , "");
+        System.out.println(dataCri);
+        String dataEnt = cpDataEntrega.getText();
+        dataEnt = dataEnt.replaceAll("/" , "");
+        dataEnt = dataEnt.replaceAll(":" , "");
+        System.out.println(dataEnt);
         
         
     }//GEN-LAST:event_btnSalvarActionPerformed

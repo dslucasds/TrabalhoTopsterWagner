@@ -2,29 +2,33 @@ package Telas;
 
 import br.SisAgenda.PainelCadastColab;
 import br.SisAgenda.PainelCadastEquipe;
+import br.SisAgenda.PainelCadastTarefa;
 import java.awt.CardLayout;
 import static java.awt.Frame.MAXIMIZED_BOTH;
+import javax.swing.JFrame;
 
 public class FramePrincipal extends javax.swing.JFrame {
 
+    
     /**
      * Creates new form FramePrincipal
      */
     public FramePrincipal() {
         initComponents();
         
+              
         PainelCadastColab cadColab = new PainelCadastColab();
         PainelCadastEquipe cadEquipe = new PainelCadastEquipe();
-        //PainelCadastTarefa cadTaref = new PainelCadastTarefa();
+        PainelCadastTarefa cadTaref = new PainelCadastTarefa();
         
         painelPrincipal.add(cadColab, "PainelCadastColab");
         painelPrincipal.add(cadEquipe, "PainelCadastEquipe");
-       // painelPrincipal.add(cadTaref, "PainelCadastTarefa");
+        painelPrincipal.add(cadTaref, "PainelCadastTarefa");
         
         CardLayout cl = (CardLayout) painelPrincipal.getLayout();
         cl.show(painelPrincipal, "telaPadrao");
         
-        //this.setExtendedState(MAXIMIZED_BOTH);
+        this.setExtendedState(MAXIMIZED_BOTH);
     }
 
     /**
