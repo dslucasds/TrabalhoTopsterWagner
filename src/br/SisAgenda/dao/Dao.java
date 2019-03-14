@@ -24,9 +24,9 @@ public class Dao extends ConnectionFactory {
                 + "values (?, ?, ?);";
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
-            st.setInt(1, eqp.getIdEquip());
-            st.setString(2, eqp.getNomEquip());
-            st.setString(3, eqp.getDesEquip());
+            st.setInt(1, eqp.getIdEqp());
+            st.setString(2, eqp.getNomEqp());
+            st.setString(3, eqp.getDesEqp());
 
             st.execute();
             st.close();
@@ -60,9 +60,9 @@ public class Dao extends ConnectionFactory {
         String sql = "update equipe set idEquip = ?, nomEquip = ?, desEquip = ?";
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
-            st.setInt(1, eqp.getIdEquip());
-            st.setString(2, eqp.getNomEquip());
-            st.setString(3, eqp.getDesEquip());
+            st.setInt(1, eqp.getIdEqp());
+            st.setString(2, eqp.getNomEqp());
+            st.setString(3, eqp.getDesEqp());
 
             st.execute();
             st.close();
@@ -72,8 +72,8 @@ public class Dao extends ConnectionFactory {
 
     }
     
-     public List<Equipe> listarClientes() throws SQLException {
-        String sql = "select * from cliente";
+     public List<Equipe> listarEquipe() throws SQLException {
+        String sql = "select * from equipe";
         List<Equipe> equipe = null;
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
@@ -83,9 +83,9 @@ public class Dao extends ConnectionFactory {
 
             while (rs.next()) {
                 Equipe e = new Equipe();
-                e.setIdEquip(rs.getInt("idEquip"));
-                e.setNomEquip(rs.getString("nomEquip"));
-                e.setDesEquip(rs.getString("desEquip"));
+                e.setIdEqp(rs.getInt("idEqp"));
+                e.setNomEqp(rs.getString("nomEqp"));
+                e.setDesEqp(rs.getString("desEqp"));
                 
 
                 equipe.add(e);
@@ -100,30 +100,28 @@ public class Dao extends ConnectionFactory {
         return equipe;
     }
 
-     /*public Equipe getEquipe(int idEquip) throws SQLException {
-        String sql = "select * from  where codcli = ?";
+     public Equipe getEquipe(int idEqp) throws SQLException {
+        String sql = "select * from  where idEqp = ?";
         Equipe equipe = null;
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
-            st.setInt(1, codcli);
+            st.setInt(1, idEqp);
             try (ResultSet rs = st.executeQuery()) {
                 if (rs.next()) {
-                    cliente = new Cliente();
-                    cliente.setCodcli(rs.getInt("codcli"));
-                    cliente.setNomcli(rs.getString("nomcli"));
-                    cliente.setEndcli(rs.getString("endcli"));
-                    cliente.setBaicli(rs.getString("baicli"));
-                    cliente.setComcli(rs.getString("comcli"));
-                    cliente.setCepcli(rs.getLong("cepcli"));
-                    cliente.setCelcli(rs.getLong("celcli"));
+                    equipe = new Equipe();
+                    equipe.setIdEqp(rs.getInt("idEqp"));
+                    equipe.setNomEqp(rs.getString("nomEqp"));
+                    equipe.setDesEqp(rs.getString("desEqp"));
+                    
+                    
                 }
             }
             st.close();
         }
 
         this.con.close();
-        return cliente;
+        return equipe;
     }
 
-     */
+    
 }

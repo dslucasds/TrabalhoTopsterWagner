@@ -29,9 +29,9 @@
                           <Component id="lblDataInicial" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="cpDataInicial" min="-2" max="-2" attributes="0"/>
-                          <Component id="cpDataEntrega" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="cpDataInicial" pref="107" max="32767" attributes="0"/>
+                          <Component id="cpDataEntrega" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>

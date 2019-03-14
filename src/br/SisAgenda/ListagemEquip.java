@@ -5,7 +5,16 @@
  */
 package br.SisAgenda;
 
+import br.SisAgenda.dao.Dao;
+import br.SisAgenda.modelo.Equipe;
 import java.awt.CardLayout;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,7 +34,35 @@ public class ListagemEquip extends javax.swing.JPanel {
         
   
     }
+    
+        private void popularTabela() {
+        Dao eqp = new Dao();
+        List<Equipe> listaEquipe;
 
+        try {
+            listaEquipe = eqp.listarEquipe();
+
+            DefaultTableModel model = (DefaultTableModel) tblEquipe.getModel();
+            List<Object> lista = new ArrayList<Object>();
+
+            for (int i = 0; i < listaEquipe.size(); i++) {
+                Equipe e = listaEquipe.get(i);
+                lista.add(new Object[]{e.getIdEqp(),e.getNomEqp(),
+                    e.getDesEqp()});
+            }
+
+            for (int idx = 0; idx < lista.size(); idx++) {
+                model.addRow((Object[]) lista.get(idx));
+            }
+
+        } catch (SQLException ex) {
+            String msg = "Ocorreu um erro ao obter os clientes do banco de dados!";
+            JOptionPane.showMessageDialog(null, msg);
+            Logger.getLogger(ListagemEquip.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+        
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -33,11 +70,11 @@ public class ListagemEquip extends javax.swing.JPanel {
 
         painelListagem = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblEquipe = new javax.swing.JTable();
 
         setLayout(new java.awt.CardLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblEquipe.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -53,7 +90,7 @@ public class ListagemEquip extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblEquipe);
 
         javax.swing.GroupLayout painelListagemLayout = new javax.swing.GroupLayout(painelListagem);
         painelListagem.setLayout(painelListagemLayout);
@@ -82,7 +119,7 @@ public class ListagemEquip extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JPanel painelListagem;
+    private javax.swing.JTable tblEquipe;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,32 +4,32 @@ package br.SisAgenda.modelo;
 
 public class Equipe {
      
-    private int idEquip;
-    private String nomEquip;
-    private String desEquip;
+    private int idEqp;
+    private String nomEqp;
+    private String desEqp;
 
-    public int getIdEquip() {
-        return idEquip;
+    public int getIdEqp() {
+        return idEqp;
     }
 
-    public void setIdEquip(int id) {
-        this.idEquip = idEquip;
+    public void setIdEqp(int id) {
+        this.idEqp = idEqp;
     }
 
-    public String getNomEquip() {
-        return nomEquip;
+    public String getNomEqp() {
+        return nomEqp;
     }
 
-    public void setNomEquip(String nomEquip) {
-        this.nomEquip = nomEquip;
+    public void setNomEqp(String nomEqp) {
+        this.nomEqp = nomEqp;
     }
 
-    public String getDesEquip() {
-        return desEquip;
+    public String getDesEqp() {
+        return desEqp;
     }
 
-    public void setDesEquip(String desEquip) {
-        this.desEquip = desEquip;
+    public void setDesEqp(String desEqp) {
+        this.desEqp = desEqp;
     }
     
     
