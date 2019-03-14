@@ -8,10 +8,6 @@ package br.SisAgenda;
 import br.SisAgenda.modelo.Tarefa;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Aluno
- */
 public class PainelCadastTarefa extends javax.swing.JPanel {
 
     /**
@@ -19,6 +15,9 @@ public class PainelCadastTarefa extends javax.swing.JPanel {
      */
     public PainelCadastTarefa() {
         initComponents();
+        
+        jComboBoxAddPara.addItem("Colaborador");
+        jComboBoxAddPara.addItem("Equipe");    
     }
 
     /**
@@ -40,6 +39,10 @@ public class PainelCadastTarefa extends javax.swing.JPanel {
         cpDescricao = new javax.swing.JTextField();
         cpDataInicial = new javax.swing.JFormattedTextField();
         cpDataEntrega = new javax.swing.JFormattedTextField();
+        jComboBoxAddPara = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        trocarEqpCol = new javax.swing.JLabel();
+        IdDaTarefa = new javax.swing.JTextField();
 
         lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblTitulo.setText("Título:");
@@ -63,6 +66,12 @@ public class PainelCadastTarefa extends javax.swing.JPanel {
         lblTituloAdicionarTarefa.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblTituloAdicionarTarefa.setText("ADICIONAR TAREFA");
 
+        cpTitulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cpTituloActionPerformed(evt);
+            }
+        });
+
         try {
             cpDataInicial.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/#### ##:##:##")));
         } catch (java.text.ParseException ex) {
@@ -74,6 +83,35 @@ public class PainelCadastTarefa extends javax.swing.JPanel {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        cpDataEntrega.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cpDataEntregaActionPerformed(evt);
+            }
+        });
+
+        jComboBoxAddPara.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione"}));
+        jComboBoxAddPara.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBoxAddParaItemStateChanged(evt);
+            }
+        });
+        jComboBoxAddPara.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxAddParaActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("Adicionar Para:");
+
+        trocarEqpCol.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        trocarEqpCol.setText(" ID:");
+
+        IdDaTarefa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IdDaTarefaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -86,25 +124,37 @@ public class PainelCadastTarefa extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnSalvar))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblDataFinal)
-                            .addComponent(lblDataInicial))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cpDataInicial, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
-                            .addComponent(cpDataEntrega))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblDescricao)
-                            .addComponent(lblTitulo))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cpTitulo)
-                            .addComponent(cpDescricao))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(lblTitulo)
+                                    .addComponent(lblDescricao)
+                                    .addComponent(trocarEqpCol))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(23, 23, 23)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(cpDataInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(cpDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(23, 23, 23)
+                                        .addComponent(cpTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(22, 22, 22)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jComboBoxAddPara, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(IdDaTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblDataFinal)
+                                    .addComponent(lblDataInicial))
+                                .addGap(31, 31, 31)
+                                .addComponent(cpDataEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(135, 135, 135)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblTituloAdicionarTarefa)
                 .addGap(119, 119, 119))
         );
@@ -113,7 +163,15 @@ public class PainelCadastTarefa extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblTituloAdicionarTarefa)
-                .addGap(66, 66, 66)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBoxAddPara, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(trocarEqpCol)
+                    .addComponent(IdDaTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTitulo)
                     .addComponent(cpTitulo))
@@ -142,28 +200,57 @@ public class PainelCadastTarefa extends javax.swing.JPanel {
         tr.setDesAge(cpDescricao.getText());
         
         String dataCri = cpDataInicial.getText();
-        dataCri = dataCri.replaceAll("/" , "");
-        dataCri = dataCri.replaceAll(":" , "");
+        //dataCri = dataCri.replaceAll("/" , "");
+        //dataCri = dataCri.replaceAll(":" , "");
         System.out.println(dataCri);
         String dataEnt = cpDataEntrega.getText();
-        dataEnt = dataEnt.replaceAll("/" , "");
-        dataEnt = dataEnt.replaceAll(":" , "");
+        //dataEnt = dataEnt.replaceAll("/" , "");
+        //dataEnt = dataEnt.replaceAll(":" , "");
         System.out.println(dataEnt);
         
         
     }//GEN-LAST:event_btnSalvarActionPerformed
 
+    private void cpDataEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpDataEntregaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cpDataEntregaActionPerformed
+
+    private void IdDaTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdDaTarefaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_IdDaTarefaActionPerformed
+
+    private void cpTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpTituloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cpTituloActionPerformed
+
+    private void jComboBoxAddParaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAddParaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxAddParaActionPerformed
+
+    private void jComboBoxAddParaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxAddParaItemStateChanged
+        String QualTipoTarefa = jComboBoxAddPara.getSelectedItem().toString();
+        if(QualTipoTarefa.equals("Colaborador")){
+            System.out.println(QualTipoTarefa);
+        }else if(QualTipoTarefa.equals("Equipe")){
+             System.out.println(QualTipoTarefa);
+        }
+    }//GEN-LAST:event_jComboBoxAddParaItemStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField IdDaTarefa;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JFormattedTextField cpDataEntrega;
     private javax.swing.JFormattedTextField cpDataInicial;
     private javax.swing.JTextField cpDescricao;
     private javax.swing.JTextField cpTitulo;
+    private javax.swing.JComboBox<String> jComboBoxAddPara;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblDataFinal;
     private javax.swing.JLabel lblDataInicial;
     private javax.swing.JLabel lblDescricao;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTituloAdicionarTarefa;
+    private javax.swing.JLabel trocarEqpCol;
     // End of variables declaration//GEN-END:variables
 }
