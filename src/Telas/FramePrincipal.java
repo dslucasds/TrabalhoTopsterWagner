@@ -174,8 +174,8 @@ public class FramePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jAgendaColabActionPerformed
 
     private void jAddTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddTarefaActionPerformed
-        //CardLayout cl = (CardLayout) painelPrincipal.getLayout();
-        //cl.show(painelPrincipal, "PainelCadastTarefa");
+        CardLayout cl = (CardLayout) painelPrincipal.getLayout();
+        cl.show(painelPrincipal, "PainelCadastTarefa");
     }//GEN-LAST:event_jAddTarefaActionPerformed
 
     private void jListarEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jListarEquipeActionPerformed

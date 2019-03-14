@@ -32,7 +32,7 @@ public class ListagemEquip extends javax.swing.JPanel {
         this.cl = (CardLayout) this.getLayout();
         this.cl.show(this, "painelListagem");
         
-  
+        this.popularTabela();
     }
     
         private void popularTabela() {
@@ -79,11 +79,11 @@ public class ListagemEquip extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Nome da equipe", "ID da equipe", "Descrição da equipe"
+                "ID da equipe", "Nome da equipe", "Descrição da equipe"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {

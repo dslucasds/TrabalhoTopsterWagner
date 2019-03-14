@@ -61,8 +61,8 @@
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="3" rowCount="0">
-                    <Column editable="true" title="Nome da equipe" type="java.lang.String"/>
                     <Column editable="true" title="ID da equipe" type="java.lang.Integer"/>
+                    <Column editable="true" title="Nome da equipe" type="java.lang.String"/>
                     <Column editable="true" title="Descri&#xe7;&#xe3;o da equipe" type="java.lang.String"/>
                   </Table>
                 </Property>
