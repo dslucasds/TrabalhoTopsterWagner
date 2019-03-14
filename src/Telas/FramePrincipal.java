@@ -4,6 +4,7 @@ import br.SisAgenda.ListagemEquip;
 import br.SisAgenda.PainelCadastColab;
 import br.SisAgenda.PainelCadastEquipe;
 import br.SisAgenda.PainelCadastTarefa;
+import br.SisAgenda.PainelListagemColab;
 import java.awt.CardLayout;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import javax.swing.JFrame;
@@ -18,17 +19,20 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         PainelCadastColab cadColab = new PainelCadastColab();
         PainelCadastEquipe cadEquipe = new PainelCadastEquipe();
-
-        ListagemEquip lisEquip = new ListagemEquip();
-
         PainelCadastTarefa cadTaref = new PainelCadastTarefa();
 
+        PainelListagemColab LisColab = new PainelListagemColab();
+        ListagemEquip lisEquip = new ListagemEquip();
+
+        //os paineis de cadastros
         painelPrincipal.add(cadColab, "PainelCadastColab");
         painelPrincipal.add(cadEquipe, "PainelCadastEquipe");
+        painelPrincipal.add(cadTaref, "PainelCadastTarefa");
 
+        //Paineis de Listagens
+        painelPrincipal.add(LisColab, "PainelListagemColaboradores");
         painelPrincipal.add(lisEquip, "ListagemEquip");
 
-        painelPrincipal.add(cadTaref, "PainelCadastTarefa");
 
         CardLayout cl = (CardLayout) painelPrincipal.getLayout();
         cl.show(painelPrincipal, "telaPadrao");
@@ -146,14 +150,15 @@ public class FramePrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(painelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addComponent(painelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 521, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(painelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
+                .addContainerGap()
+                .addComponent(painelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(145, 145, 145))
         );
 
         pack();
@@ -184,7 +189,8 @@ public class FramePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jCadastroEquipeActionPerformed
 
     private void jListarColabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jListarColabActionPerformed
-        
+        CardLayout cl = (CardLayout) painelPrincipal.getLayout();
+        cl.show(painelPrincipal, "PainelListagemColaboradores");
     }//GEN-LAST:event_jListarColabActionPerformed
 
     /**
