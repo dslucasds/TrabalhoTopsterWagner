@@ -16,10 +16,6 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Aluno
- */
 public class ListagemEquip extends javax.swing.JPanel {
     
     private CardLayout cl;

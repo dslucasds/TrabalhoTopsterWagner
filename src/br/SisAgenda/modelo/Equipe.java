@@ -13,7 +13,7 @@ public class Equipe {
     }
 
     public void setIdEqp(int id) {
-        this.idEqp = idEqp;
+        this.idEqp = id;
     }
 
     public String getNomEqp() {
@@ -30,7 +30,5 @@ public class Equipe {
 
     public void setDesEqp(String desEqp) {
         this.desEqp = desEqp;
-    }
-    
-    
+    }    
 }
