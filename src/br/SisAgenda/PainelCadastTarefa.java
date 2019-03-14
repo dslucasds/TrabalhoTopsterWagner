@@ -142,13 +142,13 @@ public class PainelCadastTarefa extends javax.swing.JPanel {
         tr.setDesAge(cpDescricao.getText());
         
         String dataCri = cpDataInicial.getText();
-        dataCri = dataCri.replaceAll("/" , "");
-        dataCri = dataCri.replaceAll(":" , "");
-        System.out.println(dataCri);
+        //dataCri = dataCri.replaceAll("/" , "");
+        //dataCri = dataCri.replaceAll(":" , "");
+        
         String dataEnt = cpDataEntrega.getText();
-        dataEnt = dataEnt.replaceAll("/" , "");
-        dataEnt = dataEnt.replaceAll(":" , "");
-        System.out.println(dataEnt);
+        //dataEnt = dataEnt.replaceAll("/" , "");
+        //dataEnt = dataEnt.replaceAll(":" , "");
+        //System.out.println(dataEnt);
         
         
     }//GEN-LAST:event_btnSalvarActionPerformed
