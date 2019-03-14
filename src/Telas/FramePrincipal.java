@@ -70,7 +70,6 @@ public class FramePrincipal extends javax.swing.JFrame {
         painelPrincipal.setLayout(new java.awt.CardLayout());
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/SisAgenda/imgs/hqdefault.jpg"))); // NOI18N
-        jLabel2.setText("jLabel2");
         painelPrincipal.add(jLabel2, "card2");
 
         jJanelaColab.setText("Colaborador");
@@ -158,7 +157,7 @@ public class FramePrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(painelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(145, 145, 145))
+                .addGap(28, 28, 28))
         );
 
         pack();

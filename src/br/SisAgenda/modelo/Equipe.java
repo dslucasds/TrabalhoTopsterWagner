@@ -30,7 +30,5 @@ public class Equipe {
 
     public void setDesEqp(String desEqp) {
         this.desEqp = desEqp;
-    }
-    
-    
+    }    
 }
