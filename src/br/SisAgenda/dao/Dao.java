@@ -19,8 +19,8 @@ public class Dao extends ConnectionFactory {
     public void inserir(Equipe eqp) throws SQLException {
 
         String sql = "insert into equipe "
-                + "(idEquip, nomEquip, "
-                + "desEquip) "
+                + "(idEqp, nomEqp, "
+                + "desEqp) "
                 + "values (?, ?, ?);";
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {

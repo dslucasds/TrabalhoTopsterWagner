@@ -74,6 +74,7 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         jJanelaColab.setText("Colaborador");
 
+        jMenuCadCol.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
         jMenuCadCol.setText("Cadastrar Colaborador");
         jMenuCadCol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,6 +83,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         });
         jJanelaColab.add(jMenuCadCol);
 
+        jListarColab.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
         jListarColab.setText("Listar Colaboradores");
         jListarColab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,6 +96,7 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         jMenu2.setText("Equipes");
 
+        jCadastroEquipe.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, 0));
         jCadastroEquipe.setText("Cadastrar Equipe");
         jCadastroEquipe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,6 +105,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(jCadastroEquipe);
 
+        jListarEquipe.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
         jListarEquipe.setText("Listar Equipe");
         jListarEquipe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,6 +118,7 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         jMenu3.setText("Tarefas");
 
+        jAddTarefa.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
         jAddTarefa.setText("Adicionar Tarefas");
         jAddTarefa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,6 +127,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         });
         jMenu3.add(jAddTarefa);
 
+        ListarTarefas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F7, 0));
         ListarTarefas.setText("Listar Tarefas");
         jMenu3.add(ListarTarefas);
 
@@ -129,6 +135,7 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         jMenu1.setText("Agenda");
 
+        jAgendaColab.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F8, 0));
         jAgendaColab.setText("Colaboradores");
         jAgendaColab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,6 +144,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jAgendaColab);
 
+        jAgendaEquipes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F9, 0));
         jAgendaEquipes.setText("Equipes");
         jMenu1.add(jAgendaEquipes);
 
