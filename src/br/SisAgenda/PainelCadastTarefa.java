@@ -202,11 +202,11 @@ public class PainelCadastTarefa extends javax.swing.JPanel {
         String dataCri = cpDataInicial.getText();
         //dataCri = dataCri.replaceAll("/" , "");
         //dataCri = dataCri.replaceAll(":" , "");
-        System.out.println(dataCri);
+        
         String dataEnt = cpDataEntrega.getText();
         //dataEnt = dataEnt.replaceAll("/" , "");
         //dataEnt = dataEnt.replaceAll(":" , "");
-        System.out.println(dataEnt);
+        //System.out.println(dataEnt);
         
         
     }//GEN-LAST:event_btnSalvarActionPerformed

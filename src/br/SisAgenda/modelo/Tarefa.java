@@ -8,7 +8,25 @@ public class Tarefa {
     private String desAge;
     private long dataCri;
     private long dataEnt;
+    private int idEqp;
+    private int idCol;
 
+    public int getIdEqp() {
+        return idEqp;
+    }
+
+    public void setIdEqp(int idEqp) {
+        this.idEqp = idEqp;
+    }
+
+    public int getIdCol() {
+        return idCol;
+    }
+
+    public void setIdCol(int idCol) {
+        this.idCol = idCol;
+    }
+    
     public String getTitAge() {
         return titAge;
     }

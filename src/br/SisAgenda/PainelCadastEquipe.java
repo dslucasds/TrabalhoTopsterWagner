@@ -5,6 +5,13 @@
  */
 package br.SisAgenda;
 
+import br.SisAgenda.dao.Dao;
+import br.SisAgenda.modelo.Equipe;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Aluno
@@ -32,10 +39,10 @@ public class PainelCadastEquipe extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jIdEquipe = new javax.swing.JTextField();
-        jNomeEquipe = new javax.swing.JTextField();
-        jDesEquipe = new javax.swing.JTextField();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        cpId = new javax.swing.JTextField();
+        cpNomEquipe = new javax.swing.JTextField();
+        cpDesEquipe = new javax.swing.JTextField();
+        btnCadastrar = new javax.swing.JToggleButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("CADASTRAR EQUIPE");
@@ -49,14 +56,19 @@ public class PainelCadastEquipe extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Descrição equipe:");
 
-        jIdEquipe.addActionListener(new java.awt.event.ActionListener() {
+        cpId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jIdEquipeActionPerformed(evt);
+                cpIdActionPerformed(evt);
             }
         });
 
-        jToggleButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jToggleButton1.setText("Cadastrar");
+        btnCadastrar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnCadastrar.setText("Cadastrar");
+        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -71,7 +83,7 @@ public class PainelCadastEquipe extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jIdEquipe))
+                                .addComponent(cpId))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
@@ -79,10 +91,10 @@ public class PainelCadastEquipe extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jToggleButton1)
+                                        .addComponent(btnCadastrar)
                                         .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(jNomeEquipe)
-                                    .addComponent(jDesEquipe)))))
+                                    .addComponent(cpNomEquipe)
+                                    .addComponent(cpDesEquipe)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(106, 106, 106)
                         .addComponent(jLabel1)
@@ -99,35 +111,55 @@ public class PainelCadastEquipe extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jIdEquipe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cpId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jNomeEquipe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cpNomEquipe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDesEquipe, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cpDesEquipe, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(37, 37, 37)
-                .addComponent(jToggleButton1)
+                .addComponent(btnCadastrar)
                 .addContainerGap(45, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jIdEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jIdEquipeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jIdEquipeActionPerformed
+    private void cpIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpIdActionPerformed
+       
+    }//GEN-LAST:event_cpIdActionPerformed
+
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        Equipe eqp = new Equipe();
+        
+        eqp.setNomEqp(cpNomEquipe.getText());
+        eqp.setDesEqp(cpDesEquipe.getText());
+        
+        
+        Dao dao = new Dao();
+        try {
+            dao.inserir(eqp);
+            JOptionPane.showMessageDialog(null, "Equipe inserida com sucesso !");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Falha ao inserir a equipe !");
+            Logger.getLogger(PainelCadastEquipe.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+    }//GEN-LAST:event_btnCadastrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField jDesEquipe;
-    private javax.swing.JTextField jIdEquipe;
+    private javax.swing.JToggleButton btnCadastrar;
+    private javax.swing.JTextField cpDesEquipe;
+    private javax.swing.JTextField cpId;
+    private javax.swing.JTextField cpNomEquipe;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jNomeEquipe;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }
