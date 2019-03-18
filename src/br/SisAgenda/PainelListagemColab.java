@@ -1,7 +1,14 @@
 package br.SisAgenda;
 
+import br.SisAgenda.dao.Dao;
 import br.SisAgenda.modelo.Colaborador;
 import java.awt.CardLayout;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 public class PainelListagemColab extends javax.swing.JPanel {
 
@@ -14,8 +21,49 @@ public class PainelListagemColab extends javax.swing.JPanel {
         this.cl = (CardLayout) this.getLayout();
         
         this.add(PainelListagem, "ListagemColab");
+        this.cl = (CardLayout) this.getLayout();
         this.cl.show(this, "ListagemColab");
+        
+        this.popularTabelaColaborador();
     }
+        
+    
+        private void popularTabelaColaborador() {
+        Dao col = new Dao();
+        List<Colaborador> listaColaborador;
+
+        try {
+            listaColaborador = col.listarColaborador();
+
+            DefaultTableModel model = (DefaultTableModel) tblColab.getModel();
+            List<Object> lista = new ArrayList<Object>();
+
+            for (int i = 0; i < listaColaborador.size(); i++) {
+                Colaborador c = listaColaborador.get(i);
+                lista.add(new Object[]{c.getIdDoColab(),
+                    c.getTipoUsuario(),c.getNomeColaborador(),c.getEnderecoColaborador(),
+                    c.getBairroColaborador(),c.getEmailColaborador(), 
+                    c.getLoginColaborador(), c.getSenhaColaborador()});
+            }
+
+            for (int idx = 0; idx < lista.size(); idx++) {
+                model.addRow((Object[]) lista.get(idx));
+            }
+
+        } catch (SQLException ex) {
+            String msg = "Ocorreu um erro ao obter os clientes do banco de dados!";
+            JOptionPane.showMessageDialog(null, msg);
+            Logger.getLogger(PainelListagemColab.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+       
+    }
+        private void limparTabelaColaborador() {
+        ((DefaultTableModel) tblColab.getModel()).setNumRows(0);
+        tblColab.updateUI();
+    }
+
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -23,7 +71,7 @@ public class PainelListagemColab extends javax.swing.JPanel {
 
         PainelListagem = new javax.swing.JPanel();
         PListagemColab = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblColab = new javax.swing.JTable();
         PainelEdicaoListagem = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -47,7 +95,7 @@ public class PainelListagemColab extends javax.swing.JPanel {
 
         setLayout(new java.awt.CardLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblColab.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -63,7 +111,7 @@ public class PainelListagemColab extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        PListagemColab.setViewportView(jTable1);
+        PListagemColab.setViewportView(tblColab);
 
         javax.swing.GroupLayout PainelListagemLayout = new javax.swing.GroupLayout(PainelListagem);
         PainelListagem.setLayout(PainelListagemLayout);
@@ -194,7 +242,7 @@ public class PainelListagemColab extends javax.swing.JPanel {
                     .addGroup(PainelEdicaoListagemLayout.createSequentialGroup()
                         .addGap(105, 105, 105)
                         .addComponent(jButtonCadast)))
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(155, Short.MAX_VALUE))
             .addComponent(jSeparator1)
             .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
@@ -295,6 +343,6 @@ public class PainelListagemColab extends javax.swing.JPanel {
     private javax.swing.JTextField jSenhaColab;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblColab;
     // End of variables declaration//GEN-END:variables
 }
