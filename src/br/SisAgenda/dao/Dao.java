@@ -83,11 +83,11 @@ public class Dao extends ConnectionFactory {
     public void alterar(Equipe eqp) throws SQLException {
 
         String sql2 = "insert into equipe "
-                + "(idEquip, nomEquip, "
-                + "desEquip) "
+                + "(idEqp, nomEqp, "
+                + "desEqp) "
                 + "values (?, ?, ?);";
 
-        String sql = "update equipe set idEquip = ?, nomEquip = ?, desEquip = ?";
+        String sql = "update equipe set idEqp = ?, nomEqp = ?, desEqp = ?";
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
             st.setInt(1, eqp.getIdEqp());
@@ -162,7 +162,7 @@ public class Dao extends ConnectionFactory {
     }
 
      public Equipe getEquipe(int idEqp) throws SQLException {
-        String sql = "select * from  where idEqp = ?";
+        String sql = "select * from equipe where idEqp = ?";
         Equipe equipe = null;
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
