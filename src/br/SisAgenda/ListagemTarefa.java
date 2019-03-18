@@ -24,9 +24,9 @@ public class ListagemTarefa extends javax.swing.JPanel {
         this.cl = (CardLayout) this.getLayout();
         this.cl.show(this, "painelListagemTarefa");
         
-        this.popularTabela();
+        this.popularTabelaTarefa();
 }
-        private void popularTabela() {
+        private void popularTabelaTarefa() {
         Dao trf = new Dao();
         List<Tarefa> listaTarefa;
 
@@ -52,7 +52,12 @@ public class ListagemTarefa extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, msg);
             Logger.getLogger(ListagemTarefa.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+            
+       
+    }
+        private void limparTabelaTarefa() {
+        ((DefaultTableModel) tblTarefa.getModel()).setNumRows(0);
+        tblTarefa.updateUI();
     }
 
     /**
@@ -79,7 +84,7 @@ public class ListagemTarefa extends javax.swing.JPanel {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Long.class, java.lang.Long.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
