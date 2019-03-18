@@ -1,7 +1,7 @@
 package Telas;
 
 import br.SisAgenda.ListagemEquip;
-import br.SisAgenda.ListagemTarefa;
+import br.SisAgenda.ListagemTarefaColab;
 import br.SisAgenda.PainelCadastColab;
 import br.SisAgenda.PainelCadastEquipe;
 import br.SisAgenda.PainelCadastTarefa;
@@ -24,7 +24,7 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         PainelListagemColab LisColab = new PainelListagemColab();
         ListagemEquip lisEquip = new ListagemEquip();
-        ListagemTarefa lisTaref = new ListagemTarefa();
+        ListagemTarefaColab lisTaref = new ListagemTarefaColab();
 
         //os paineis de cadastros
         painelPrincipal.add(cadColab, "PainelCadastColab");
@@ -131,7 +131,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         jMenu3.add(jAddTarefa);
 
         ListarTarefas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F7, 0));
-        ListarTarefas.setText("Listar Tarefas");
+        ListarTarefas.setText("Listar Tarefas Colaboradores");
         ListarTarefas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ListarTarefasActionPerformed(evt);

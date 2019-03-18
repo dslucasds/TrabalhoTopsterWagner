@@ -4,10 +4,29 @@ package br.SisAgenda.modelo;
 
 public class Tarefa {
     
+    private int Colab;//vai ser pra setar o id do colaborador e da equipe
+    private int Equipe;
     private String titAge;
     private String desAge;
     private String dataCri;
+    private String dataEnt;
 
+    public Integer getColab() {
+        return Colab;
+    }
+
+    public void setColab(Integer Colab) {
+        this.Colab = Colab;
+    }
+
+    public Integer getEquipe() {
+        return Equipe;
+    }
+
+    public void setEquipe(Integer Equipe) {
+        this.Equipe = Equipe;
+    }
+    
     public String getDataCri() {
         return dataCri;
     }
@@ -23,26 +42,7 @@ public class Tarefa {
     public void setDataEnt(String dataEnt) {
         this.dataEnt = dataEnt;
     }
-    private String dataEnt;
-    private int idEqp;
-    private int idCol;
-
-    public int getIdEqp() {
-        return idEqp;
-    }
-
-    public void setIdEqp(int idEqp) {
-        this.idEqp = idEqp;
-    }
-
-    public int getIdCol() {
-        return idCol;
-    }
-
-    public void setIdCol(int idCol) {
-        this.idCol = idCol;
-    }
-    
+  
     public String getTitAge() {
         return titAge;
     }
@@ -58,6 +58,4 @@ public class Tarefa {
     public void setDesAge(String desAge) {
         this.desAge = desAge;
     }
-
- 
 }

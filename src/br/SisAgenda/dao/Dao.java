@@ -151,8 +151,8 @@ public class Dao extends ConnectionFactory {
                 t.setDataEnt(rs.getString("dataEnt"));
                 t.setTitAge(rs.getString("titAge"));
                 t.setDesAge(rs.getString("desAge"));
-                t.setIdEqp(rs.getInt("idEqp"));
-                t.setIdCol(rs.getInt("idCol"));
+                t.setEquipe(rs.getInt("idEqp"));
+                t.setColab(rs.getInt("idCol"));
 
                 tarefa.add(t);
             }
@@ -179,8 +179,8 @@ public class Dao extends ConnectionFactory {
                     tarefa.setDataEnt(rs.getString("dataEnt"));
                     tarefa.setTitAge(rs.getString("titAge"));
                     tarefa.setDesAge(rs.getString("desAge"));
-                    tarefa.setIdEqp(rs.getInt("idEqp"));
-                    tarefa.setIdCol(rs.getInt("idCol"));
+                    tarefa.setEquipe(rs.getInt("idEqp"));
+                    tarefa.setColab(rs.getInt("idCol"));
                 }
             }
             st.close();
@@ -203,8 +203,8 @@ public class Dao extends ConnectionFactory {
             st.setString(2, trf.getDataEnt());
             st.setString(3, trf.getTitAge());
             st.setString(4, trf.getDesAge());
-            st.setInt(5, trf.getIdEqp());
-            st.setInt(6, trf.getIdCol());
+            st.setInt(5, trf.getEquipe());
+            st.setInt(6, trf.getColab());
             st.execute();
             st.close();
         }
@@ -230,8 +230,8 @@ public class Dao extends ConnectionFactory {
             st.setString(2, trf.getDataEnt());
             st.setString(3, trf.getTitAge());
             st.setString(4, trf.getDesAge());
-            st.setInt(5, trf.getIdEqp());
-            st.setInt(6, trf.getIdCol());
+            st.setInt(5, trf.getEquipe());
+            st.setInt(6, trf.getColab());
             st.execute();
             st.close();
 

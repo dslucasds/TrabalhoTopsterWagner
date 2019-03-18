@@ -12,15 +12,15 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
-public class ListagemTarefa extends javax.swing.JPanel {
+public class ListagemTarefaColab extends javax.swing.JPanel {
 
     private CardLayout cl;
     private int id;
    
-    public ListagemTarefa() {
+    public ListagemTarefaColab() {
         initComponents();
         
-        this.add(painelListagemTarefa, "painelListagemTarefa");
+        this.add(painelListagemTarefaColab, "painelListagemTarefa");
         this.cl = (CardLayout) this.getLayout();
         this.cl.show(this, "painelListagemTarefa");
         
@@ -38,9 +38,9 @@ public class ListagemTarefa extends javax.swing.JPanel {
 
             for (int i = 0; i < listaTarefa.size(); i++) {
                 Tarefa t = listaTarefa.get(i);
-                lista.add(new Object[]{t.getTitAge(),
+                lista.add(new Object[]{t.getColab(), t.getTitAge(),
                     t.getDesAge(),t.getDataCri(),t.getDataEnt(),
-                    t.getIdCol(),t.getIdEqp()});
+                    });
             }
 
             for (int idx = 0; idx < lista.size(); idx++) {
@@ -48,9 +48,9 @@ public class ListagemTarefa extends javax.swing.JPanel {
             }
 
         } catch (SQLException ex) {
-            String msg = "Ocorreu um erro ao obter os clientes do banco de dados!";
+            String msg = "Ocorreu um erro ao obter as tarefas do banco de dados!";
             JOptionPane.showMessageDialog(null, msg);
-            Logger.getLogger(ListagemTarefa.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ListagemTarefaColab.class.getName()).log(Level.SEVERE, null, ex);
         }
             
        
@@ -69,7 +69,7 @@ public class ListagemTarefa extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        painelListagemTarefa = new javax.swing.JPanel();
+        painelListagemTarefaColab = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblTarefa = new javax.swing.JTable();
 
@@ -80,11 +80,11 @@ public class ListagemTarefa extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Título", "Descrição", "Data Inicial", "Data de Entrega", "Id Colaborador", "Id Equipe"
+                "Id Colaborador", "Título", "Descrição", "Data Inicial", "Data de Entrega"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -93,28 +93,28 @@ public class ListagemTarefa extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblTarefa);
 
-        javax.swing.GroupLayout painelListagemTarefaLayout = new javax.swing.GroupLayout(painelListagemTarefa);
-        painelListagemTarefa.setLayout(painelListagemTarefaLayout);
-        painelListagemTarefaLayout.setHorizontalGroup(
-            painelListagemTarefaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout painelListagemTarefaColabLayout = new javax.swing.GroupLayout(painelListagemTarefaColab);
+        painelListagemTarefaColab.setLayout(painelListagemTarefaColabLayout);
+        painelListagemTarefaColabLayout.setHorizontalGroup(
+            painelListagemTarefaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 420, Short.MAX_VALUE)
-            .addGroup(painelListagemTarefaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelListagemTarefaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE))
         );
-        painelListagemTarefaLayout.setVerticalGroup(
-            painelListagemTarefaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        painelListagemTarefaColabLayout.setVerticalGroup(
+            painelListagemTarefaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 322, Short.MAX_VALUE)
-            .addGroup(painelListagemTarefaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelListagemTarefaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE))
         );
 
-        add(painelListagemTarefa, "card2");
+        add(painelListagemTarefaColab, "card2");
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPanel painelListagemTarefa;
+    private javax.swing.JPanel painelListagemTarefaColab;
     private javax.swing.JTable tblTarefa;
     // End of variables declaration//GEN-END:variables
 }
