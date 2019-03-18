@@ -1,6 +1,7 @@
 package Telas;
 
 import br.SisAgenda.ListagemEquip;
+import br.SisAgenda.ListagemTarefa;
 import br.SisAgenda.PainelCadastColab;
 import br.SisAgenda.PainelCadastEquipe;
 import br.SisAgenda.PainelCadastTarefa;
@@ -23,6 +24,7 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         PainelListagemColab LisColab = new PainelListagemColab();
         ListagemEquip lisEquip = new ListagemEquip();
+        ListagemTarefa lisTaref = new ListagemTarefa();
 
         //os paineis de cadastros
         painelPrincipal.add(cadColab, "PainelCadastColab");
@@ -32,6 +34,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         //Paineis de Listagens
         painelPrincipal.add(LisColab, "PainelListagemColaboradores");
         painelPrincipal.add(lisEquip, "ListagemEquip");
+        painelPrincipal.add(lisTaref, "ListagemTarefas");
 
 
         CardLayout cl = (CardLayout) painelPrincipal.getLayout();
@@ -129,6 +132,11 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         ListarTarefas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F7, 0));
         ListarTarefas.setText("Listar Tarefas");
+        ListarTarefas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ListarTarefasActionPerformed(evt);
+            }
+        });
         jMenu3.add(ListarTarefas);
 
         jMenuBar1.add(jMenu3);
@@ -199,6 +207,11 @@ public class FramePrincipal extends javax.swing.JFrame {
         CardLayout cl = (CardLayout) painelPrincipal.getLayout();
         cl.show(painelPrincipal, "PainelListagemColaboradores");
     }//GEN-LAST:event_jListarColabActionPerformed
+
+    private void ListarTarefasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListarTarefasActionPerformed
+        CardLayout cl = (CardLayout) painelPrincipal.getLayout();
+        cl.show(painelPrincipal, "ListagemTarefas");
+    }//GEN-LAST:event_ListarTarefasActionPerformed
 
     /**
      * @param args the command line arguments

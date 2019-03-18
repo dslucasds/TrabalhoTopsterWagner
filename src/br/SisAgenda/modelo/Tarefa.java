@@ -6,8 +6,24 @@ public class Tarefa {
     
     private String titAge;
     private String desAge;
-    private long dataCri;
-    private long dataEnt;
+    private String dataCri;
+
+    public String getDataCri() {
+        return dataCri;
+    }
+
+    public void setDataCri(String dataCri) {
+        this.dataCri = dataCri;
+    }
+
+    public String getDataEnt() {
+        return dataEnt;
+    }
+
+    public void setDataEnt(String dataEnt) {
+        this.dataEnt = dataEnt;
+    }
+    private String dataEnt;
     private int idEqp;
     private int idCol;
 
@@ -43,20 +59,5 @@ public class Tarefa {
         this.desAge = desAge;
     }
 
-    public long getDataCri() {
-        return dataCri;
-    }
-
-    public void setDataCri(long dataCri) {
-        this.dataCri = dataCri;
-    }
-
-    public long getDataEnt() {
-        return dataEnt;
-    }
-
-    public void setDataEnt(long dataEnt) {
-        this.dataEnt = dataEnt;
-    }
-    
+ 
 }

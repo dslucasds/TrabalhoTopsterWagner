@@ -41,14 +41,14 @@ public class Dao extends ConnectionFactory {
         //INSERIR TAREFA//
      public void inserir(Tarefa trf) throws SQLException {
 
-        String sql = "insert into tarefa "
+        String sql = "insert into agenda "
                 + "(dataCri, dataEnt, titAge, desAge, "
                 + "idEqp, idCol) "
                 + "values (?, ?, ?, ?, ?, ?);";
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
-            st.setLong(1, trf.getDataCri());
-            st.setLong(2, trf.getDataEnt());
+            st.setString(1, trf.getDataCri());
+            st.setString(2, trf.getDataEnt());
             st.setString(3, trf.getTitAge());
             st.setString(4, trf.getDesAge());
             st.setInt(5, trf.getIdEqp());
@@ -105,7 +105,7 @@ public class Dao extends ConnectionFactory {
         //ALTERAR TAREFA//
     public void alterar(Tarefa trf) throws SQLException {
 
-        String sql2 = "insert into tarefa "
+        String sql2 = "insert into agenda "
                 + "(dataCri, dataEnt, titAge, desAge, "
                 + "idEqp, idCol) "
                 + "values (?, ?, ?, ?, ?, ?);";
@@ -115,8 +115,8 @@ public class Dao extends ConnectionFactory {
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
                       
-            st.setLong(1, trf.getDataCri());
-            st.setLong(2, trf.getDataEnt());
+            st.setString(1, trf.getDataCri());
+            st.setString(2, trf.getDataEnt());
             st.setString(3, trf.getTitAge());
             st.setString(4, trf.getDesAge());
             st.setInt(5, trf.getIdEqp());
@@ -189,7 +189,7 @@ public class Dao extends ConnectionFactory {
             //LISTAR TAREFA//
      
         public List<Tarefa> listarTarefa() throws SQLException {
-        String sql = "select * from tarefa";
+        String sql = "select * from agenda";
         List<Tarefa> tarefa = null;
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
@@ -199,8 +199,8 @@ public class Dao extends ConnectionFactory {
 
                 while (rs.next()) {
                     Tarefa t = new Tarefa();
-                    t.setDataCri(rs.getLong("dataCri"));
-                    t.setDataEnt(rs.getLong("dataEnt"));
+                    t.setDataCri(rs.getString("dataCri"));
+                    t.setDataEnt(rs.getString("dataEnt"));
                     t.setTitAge(rs.getString("titAge"));
                     t.setDesAge(rs.getString("desAge"));
                     t.setIdEqp(rs.getInt("idEqp"));
@@ -228,8 +228,8 @@ public class Dao extends ConnectionFactory {
             try (ResultSet rs = st.executeQuery()) {
                 if (rs.next()) {
                     tarefa = new Tarefa();
-                    tarefa.setDataCri(rs.getLong("dataCri"));
-                    tarefa.setDataEnt(rs.getLong("dataEnt"));
+                    tarefa.setDataCri(rs.getString("dataCri"));
+                    tarefa.setDataEnt(rs.getString("dataEnt"));
                     tarefa.setTitAge(rs.getString("titAge"));
                     tarefa.setDesAge(rs.getString("desAge"));
                     tarefa.setIdEqp(rs.getInt("idEqp"));
