@@ -327,12 +327,10 @@ public class Dao extends ConnectionFactory {
             st.setString(6,col.getEnderecoColaborador());
             st.setString(7,col.getBairroColaborador());
             st.setString(8, col.getEmailColaborador());
-            st.setInt(9,col.getIdDoColab());
+            //st.setInt(9,col.getIdDoColab());
                             
             st.execute();
-            st.close();
-            
-            
+            st.close();     
         }
 
         this.con.close();

@@ -5,7 +5,11 @@
  */
 package br.SisAgenda;
 
+import br.SisAgenda.dao.Dao;
 import br.SisAgenda.modelo.Colaborador;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -236,6 +240,17 @@ public class PainelCadastColab extends javax.swing.JPanel {
         Col.setEmailColaborador(jEmailColab.getText());
         Col.setLoginColaborador(jLoginColab.getText());
         Col.setSenhaColaborador(jSenhaColab.getText());
+        int EqpNula = 0; 
+        Col.setEmailColaborador(EqpNula.Integer.parse.getText());
+        
+         Dao dao = new Dao();
+        try {
+            dao.inserir(Col);
+            javax.swing.JOptionPane.showMessageDialog(null, "Equipe inserida com sucesso !");
+        } catch (SQLException ex) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Falha ao inserir a equipe !");
+            Logger.getLogger(PainelCadastEquipe.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtonCadastActionPerformed
 
 

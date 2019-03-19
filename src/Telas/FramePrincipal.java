@@ -213,9 +213,6 @@ public class FramePrincipal extends javax.swing.JFrame {
         cl.show(painelPrincipal, "ListagemTarefas");
     }//GEN-LAST:event_ListarTarefasActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
