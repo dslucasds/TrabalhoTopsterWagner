@@ -217,9 +217,9 @@ public class Dao extends ConnectionFactory {
     public void alterar(Tarefa trf) throws SQLException {
 
         String sql2 = "insert into agenda "
-                + "(dataCri, dataEnt, titAge, desAge, "
-                + "idEqp, idCol) "
-                + "values (?, ?, ?, ?, ?, ?);";
+               + "(dataCri, dataEnt, titAge, desAge, "
+              + "idEqp, idCol) "
+              + "values (?, ?, ?, ?, ?, ?);";
 
         String sql = "update agenda set dataCri = ?, dataEnt = ?, titAge = ?"
                 + "desAge = ?, idEqp = ?, idCol = ? ";
@@ -340,26 +340,27 @@ public class Dao extends ConnectionFactory {
     //ALTERAR TAREFA//
     public void alterar(Colaborador col) throws SQLException {
 
-        String sql2 = "insert into colaborador "
-                + "(idCol, tipoCol, nomCol, loginCol, "
-                + "senhaCol, endCol, baiCol, emailCol, idEqp)"
-                + "values (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        //String sql2 = "insert into colaborador "
+         //       + "(idCol, tipoCol, nomCol, loginCol, "
+         //       + "senhaCol, endCol, baiCol, emailCol, idEqp)"
+          //      + "values (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
-        String sql = "update equipe set idCol = ?, tipoCol = ?, nomCol = ?"
+        String sql = "update colaborador set tipoCol = ?, nomCol = ?"
                 + "loginCol = ?, senhaCol = ?, endCol = ?, baiCol = ?"
-                + ", emailCol = ?, idEqp = ? ";
+                + ", emailCol = ? where idEqp = ? ";
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
 
-            st.setInt(1, col.getIdDoColab());
-            st.setString(2, col.getTipoUsuario());
-            st.setString(3, col.getNomeColaborador());
-            st.setString(4, col.getLoginColaborador());
-            st.setString(5, col.getSenhaColaborador());
-            st.setString(6,col.getEnderecoColaborador());
-            st.setString(7,col.getBairroColaborador());
-            st.setString(8, col.getEmailColaborador());
-            st.setInt(9,col.getIdDoColab());
+            
+            st.setString(1, col.getTipoUsuario());
+            st.setString(2, col.getNomeColaborador());
+            st.setString(3, col.getLoginColaborador());
+            st.setString(4, col.getSenhaColaborador());
+            st.setString(5,col.getEnderecoColaborador());
+            st.setString(6,col.getBairroColaborador());
+            st.setString(7, col.getEmailColaborador());
+            st.setInt(8,col.getIdDoColab());
+            st.setInt(9, col.getIdDoColab());
             st.execute();
             st.close();
 
