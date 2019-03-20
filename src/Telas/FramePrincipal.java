@@ -185,6 +185,9 @@ public class FramePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jAddTarefaActionPerformed
 
     private void jListarEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jListarEquipeActionPerformed
+        ListagemEquip lisEquip = new ListagemEquip();
+        painelPrincipal.add(lisEquip, "ListagemEquip");
+        
         CardLayout cl = (CardLayout) painelPrincipal.getLayout();
         cl.show(painelPrincipal, "ListagemEquip");
     }//GEN-LAST:event_jListarEquipeActionPerformed

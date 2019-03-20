@@ -59,18 +59,18 @@ public class Dao extends ConnectionFactory {
     //ALTERAR EQUIPE//
     public void alterar(Equipe eqp) throws SQLException {
 
-        String sql2 = "insert into equipe "
-                + "(idEqp, nomEqp, "
-                + "desEqp) "
-                + "values (?, ?, ?);";
+        //String sql2 = "insert into equipe "
+              //  + "(idEqp, nomEqp, "
+              //  + "desEqp) "
+             //   + "values (?, ?, ?);";
 
-        String sql = "update equipe set idEqp = ?, nomEqp = ?, desEqp = ?";
+        String sql = "update equipe set nomEqp = ?, desEqp = ? where idEqp = ?";
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
-            st.setInt(1, eqp.getIdEqp());
-            st.setString(2, eqp.getNomEqp());
-            st.setString(3, eqp.getDesEqp());
-
+            
+            st.setString(1, eqp.getNomEqp());
+            st.setString(2, eqp.getDesEqp());
+             st.setInt(3, eqp.getIdEqp());        
             st.execute();
             st.close();
         }

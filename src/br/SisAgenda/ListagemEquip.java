@@ -25,6 +25,8 @@ public class ListagemEquip extends javax.swing.JPanel {
         initComponents();
         
         this.add(painelListagem, "painelListagem");
+        this.add(painelEdicao, "painelEdicao");
+        
         this.cl = (CardLayout) this.getLayout();
         this.cl.show(this, "painelListagem");
         
@@ -77,10 +79,8 @@ public class ListagemEquip extends javax.swing.JPanel {
         painelEdicao = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        cpId = new javax.swing.JTextField();
         cpNomEquipe = new javax.swing.JTextField();
         cpDesEquipe = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
@@ -146,20 +146,11 @@ public class ListagemEquip extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("EDITAR EQUIPE");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("ID da equipe:");
-
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Nome da equipe:");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Descrição equipe:");
-
-        cpId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cpIdActionPerformed(evt);
-            }
-        });
 
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -183,26 +174,23 @@ public class ListagemEquip extends javax.swing.JPanel {
             .addGroup(painelEdicaoLayout.createSequentialGroup()
                 .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelEdicaoLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
                         .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(painelEdicaoLayout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cpId))
+                                .addGap(20, 20, 20)
+                                .addComponent(jLabel4))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelEdicaoLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel3)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(painelEdicaoLayout.createSequentialGroup()
-                                .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(painelEdicaoLayout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(btnSalvar)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnApagar)
-                                        .addGap(30, 30, 30))
-                                    .addComponent(cpNomEquipe)
-                                    .addComponent(cpDesEquipe)))))
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnSalvar)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnApagar)
+                                .addGap(30, 30, 30))
+                            .addComponent(cpNomEquipe)
+                            .addComponent(cpDesEquipe)))
                     .addGroup(painelEdicaoLayout.createSequentialGroup()
                         .addGap(106, 106, 106)
                         .addComponent(jLabel1)
@@ -216,19 +204,15 @@ public class ListagemEquip extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(cpId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cpNomEquipe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(38, 38, 38)
                 .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(cpNomEquipe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cpDesEquipe, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(painelEdicaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
                     .addComponent(btnApagar))
@@ -238,18 +222,15 @@ public class ListagemEquip extends javax.swing.JPanel {
         add(painelEdicao, "card3");
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cpIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpIdActionPerformed
-
-    }//GEN-LAST:event_cpIdActionPerformed
-
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         Equipe eqp = new Equipe();
        
-        
+       
         eqp.setNomEqp(cpNomEquipe.getText());
         eqp.setDesEqp(cpDesEquipe.getText());
         eqp.setIdEqp(this.id);
         
+        //Inseri o cliente no banco de dados
         Dao dao = new Dao();
         try {
             dao.alterar(eqp);
@@ -324,10 +305,8 @@ public class ListagemEquip extends javax.swing.JPanel {
     private javax.swing.JButton btnApagar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JTextField cpDesEquipe;
-    private javax.swing.JTextField cpId;
     private javax.swing.JTextField cpNomEquipe;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
