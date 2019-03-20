@@ -30,7 +30,7 @@ public class ListagemEquip extends javax.swing.JPanel {
         this.cl = (CardLayout) this.getLayout();
         this.cl.show(this, "painelListagem");
         
-        this.popularTabela();
+        
     }
     
         private void popularTabela() {
