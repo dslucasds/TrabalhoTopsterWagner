@@ -185,24 +185,9 @@ public class PainelCadastTarefa extends javax.swing.JPanel {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         Tarefa tr = new Tarefa();
         String QualTipoTarefa = jComboBoxAddPara.getSelectedItem().toString();
-
-        //formatação das datas//espero q funcione
-        //SimpleDateFormat formatador = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        //String dataCri = cpDataInicial.getText();
-        //String dataTxt = formatador.format(dataCri);
- 
-        
+       
         tr.setTitAge(cpTitulo.getText());
         tr.setDesAge(cpDescricao.getText());
-
-        //formatação das datas//espero q funcione
-        //String dataCri = cpDataInicial.getText();
-        //dataCri = dataCri.replaceAll("/", "");
-        //dataCri = dataCri.replaceAll(":", "");
-
-        String dataEnt = cpDataEntrega.getText();
-        //dataEnt = dataEnt.replaceAll("/", "");
-        //dataEnt = dataEnt.replaceAll(":", "");
 
         //inserçao de dados pro Sql
         if (QualTipoTarefa.equals("Equipe")) {
