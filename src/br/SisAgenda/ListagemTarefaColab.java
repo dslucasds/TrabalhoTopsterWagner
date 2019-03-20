@@ -72,6 +72,19 @@ public class ListagemTarefaColab extends javax.swing.JPanel {
         painelListagemTarefaColab = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblTarefa = new javax.swing.JTable();
+        painelEdiçãoAgendaColab = new javax.swing.JPanel();
+        lblTitulo = new javax.swing.JLabel();
+        lblDescricao = new javax.swing.JLabel();
+        lblDataFinal = new javax.swing.JLabel();
+        btnSalvar = new javax.swing.JButton();
+        lblTituloAdicionarTarefa = new javax.swing.JLabel();
+        cpTitulo = new javax.swing.JTextField();
+        cpDescricao = new javax.swing.JTextField();
+        cpDataEntrega = new javax.swing.JFormattedTextField();
+        jComboBoxAddPara = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        cpTipoId = new javax.swing.JTextField();
 
         setLayout(new java.awt.CardLayout());
 
@@ -109,11 +122,193 @@ public class ListagemTarefaColab extends javax.swing.JPanel {
         );
 
         add(painelListagemTarefaColab, "card2");
+
+        lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTitulo.setText("Título:");
+
+        lblDescricao.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblDescricao.setText("Descrição:");
+
+        lblDataFinal.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblDataFinal.setText("Nova Data de Entrega:");
+
+        btnSalvar.setText("SALVAR");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
+
+        lblTituloAdicionarTarefa.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTituloAdicionarTarefa.setText("EDITAR TAREFAS");
+
+        cpTitulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cpTituloActionPerformed(evt);
+            }
+        });
+
+        try {
+            cpDataEntrega.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####/##/## ##:##:##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        cpDataEntrega.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cpDataEntregaActionPerformed(evt);
+            }
+        });
+
+        jComboBoxAddPara.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione"}));
+        jComboBoxAddPara.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBoxAddParaItemStateChanged(evt);
+            }
+        });
+        jComboBoxAddPara.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxAddParaActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("Adicionar Para:");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setText("ID:");
+
+        javax.swing.GroupLayout painelEdiçãoAgendaColabLayout = new javax.swing.GroupLayout(painelEdiçãoAgendaColab);
+        painelEdiçãoAgendaColab.setLayout(painelEdiçãoAgendaColabLayout);
+        painelEdiçãoAgendaColabLayout.setHorizontalGroup(
+            painelEdiçãoAgendaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelEdiçãoAgendaColabLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTituloAdicionarTarefa)
+                .addGap(119, 119, 119))
+            .addGroup(painelEdiçãoAgendaColabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(painelEdiçãoAgendaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(lblDataFinal)
+                    .addComponent(lblTitulo)
+                    .addComponent(lblDescricao))
+                .addGap(22, 22, 22)
+                .addGroup(painelEdiçãoAgendaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelEdiçãoAgendaColabLayout.createSequentialGroup()
+                        .addComponent(cpDataEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSalvar))
+                    .addComponent(cpDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cpTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxAddPara, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cpTipoId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        painelEdiçãoAgendaColabLayout.setVerticalGroup(
+            painelEdiçãoAgendaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelEdiçãoAgendaColabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTituloAdicionarTarefa)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(painelEdiçãoAgendaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBoxAddPara, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(painelEdiçãoAgendaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(cpTipoId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
+                .addGroup(painelEdiçãoAgendaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTitulo)
+                    .addComponent(cpTitulo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(painelEdiçãoAgendaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblDescricao)
+                    .addComponent(cpDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(painelEdiçãoAgendaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDataFinal)
+                    .addComponent(cpDataEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSalvar))
+                .addGap(18, 18, 18))
+        );
+
+        add(painelEdiçãoAgendaColab, "card3");
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        Tarefa tr = new Tarefa();
+        String QualTipoTarefa = jComboBoxAddPara.getSelectedItem().toString();
+
+        tr.setTitAge(cpTitulo.getText());
+        tr.setDesAge(cpDescricao.getText());
+
+        //inserçao de dados pro Sql
+        if (QualTipoTarefa.equals("Equipe")) {
+            int ide = Integer.parseInt(cpTipoId.getText());
+            tr.setEquipe(ide);
+            int idec = 0;
+            tr.setColab(idec);
+        } else if (QualTipoTarefa.equals("Colaborador")) {
+            int idce = 0;
+            tr.setEquipe(idce);
+            int idc = Integer.parseInt(cpTipoId.getText());
+            tr.setColab(idc);
+        }
+        tr.setDataEnt(cpDataEntrega.getText());
+        tr.setTitAge(cpTitulo.getText());
+        tr.setDesAge(cpDescricao.getText());
+
+        //provavelmente tenho q mudar o dao do inserir pq nao ocorre nenhuma mudança na data de criaçao
+        //somente na de entrega
+        Dao dao = new Dao();
+        try {
+            dao.alterar(tr);
+            javax.swing.JOptionPane.showMessageDialog(null, "tarefa inserida com sucesso !");
+        } catch (SQLException ex) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Falha ao inserir uma Tarefa !");
+            Logger.getLogger(PainelCadastEquipe.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void cpTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpTituloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cpTituloActionPerformed
+
+    private void cpDataEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpDataEntregaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cpDataEntregaActionPerformed
+
+    private void jComboBoxAddParaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxAddParaItemStateChanged
+        String QualTipoTarefa = jComboBoxAddPara.getSelectedItem().toString();
+        if (QualTipoTarefa.equals("Colaborador")) {
+            System.out.println(QualTipoTarefa);
+        } else if (QualTipoTarefa.equals("Equipe")) {
+            System.out.println(QualTipoTarefa);
+        }
+    }//GEN-LAST:event_jComboBoxAddParaItemStateChanged
+
+    private void jComboBoxAddParaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAddParaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxAddParaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSalvar;
+    private javax.swing.JFormattedTextField cpDataEntrega;
+    private javax.swing.JTextField cpDescricao;
+    private javax.swing.JTextField cpTipoId;
+    private javax.swing.JTextField cpTitulo;
+    private javax.swing.JComboBox<String> jComboBoxAddPara;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblDataFinal;
+    private javax.swing.JLabel lblDescricao;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblTituloAdicionarTarefa;
+    private javax.swing.JPanel painelEdiçãoAgendaColab;
     private javax.swing.JPanel painelListagemTarefaColab;
     private javax.swing.JTable tblTarefa;
     // End of variables declaration//GEN-END:variables
