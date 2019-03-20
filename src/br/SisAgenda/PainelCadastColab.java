@@ -55,6 +55,8 @@ public class PainelCadastColab extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jSenhaColab = new javax.swing.JTextField();
         jButtonCadast = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        jIdentEqp = new javax.swing.JTextField();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Cadastro Colaborador");
@@ -125,51 +127,65 @@ public class PainelCadastColab extends javax.swing.JPanel {
             }
         });
 
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel10.setText("ID da equipe:");
+
+        jIdentEqp.setText("(Deixar 0 se não pertencer a nenhuma)");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator1)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jLabel6)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jEmailColab))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jLabel5)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jBairroColab))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jLabel4)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jEndColab))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(ComboBoxTipoColab, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jNomeColab, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel7)
-                                .addComponent(jLabel9))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLoginColab, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jSenhaColab, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addComponent(jLabel1)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
-                        .addComponent(jButtonCadast)))
-                .addContainerGap(34, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel7)
+                                            .addComponent(jLabel9))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLoginColab, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jSenhaColab, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING)))
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(105, 105, 105)
+                                .addComponent(jButtonCadast))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jLabel10)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jIdentEqp))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jLabel6)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jEmailColab))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jLabel5)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jBairroColab))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jLabel4)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jEndColab))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(ComboBoxTipoColab, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jNomeColab))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,6 +214,10 @@ public class PainelCadastColab extends javax.swing.JPanel {
                     .addComponent(jLabel6)
                     .addComponent(jEmailColab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(jIdentEqp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
                 .addComponent(jLabel8)
@@ -209,7 +229,7 @@ public class PainelCadastColab extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(jSenhaColab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jButtonCadast)
                 .addContainerGap())
         );
@@ -232,23 +252,23 @@ public class PainelCadastColab extends javax.swing.JPanel {
     }//GEN-LAST:event_jLoginColabActionPerformed
 
     private void jButtonCadastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastActionPerformed
+        String TipoCol = (String)ComboBoxTipoColab.getSelectedItem();
         Colaborador Col = new Colaborador();
-        //Col.setTipoUsuario()
+        Col.setTipoUsuario(TipoCol);
         Col.setNomeColaborador(jNomeColab.getText());
         Col.setEnderecoColaborador(jEndColab.getText());
         Col.setBairroColaborador(jBairroColab.getText());
         Col.setEmailColaborador(jEmailColab.getText());
         Col.setLoginColaborador(jLoginColab.getText());
         Col.setSenhaColaborador(jSenhaColab.getText());
-        int EqpNula = 0; 
-        Col.setEmailColaborador(EqpNula.Integer.parse.getText());
+        Col.setCodEquipe(jIdentEqp.getText());
         
          Dao dao = new Dao();
         try {
             dao.inserir(Col);
-            javax.swing.JOptionPane.showMessageDialog(null, "Equipe inserida com sucesso !");
+            javax.swing.JOptionPane.showMessageDialog(null, "Colaborador inserido com sucesso !");
         } catch (SQLException ex) {
-            javax.swing.JOptionPane.showMessageDialog(null, "Falha ao inserir a equipe !");
+            javax.swing.JOptionPane.showMessageDialog(null, "Falha ao inserir um colaborador !");
             Logger.getLogger(PainelCadastEquipe.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButtonCadastActionPerformed
@@ -260,7 +280,9 @@ public class PainelCadastColab extends javax.swing.JPanel {
     private javax.swing.JButton jButtonCadast;
     private javax.swing.JTextField jEmailColab;
     private javax.swing.JTextField jEndColab;
+    private javax.swing.JTextField jIdentEqp;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

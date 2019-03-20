@@ -2,7 +2,7 @@ package br.SisAgenda.modelo;
 
 public class Colaborador {
     private int CodColab;
-    private int CodEquipe;
+    private String CodEquipe;
     private String TipoUsuario;
     private String NomeColaborador;
     private String EnderecoColaborador;
@@ -19,13 +19,14 @@ public class Colaborador {
         this.CodColab = CodColab;
     }
 
-    public int getCodEquipe() {
+    public String getCodEquipe() {
         return CodEquipe;
     }
 
-    public void setCodEquipe(int CodEquipe) {
+    public void setCodEquipe(String CodEquipe) {
         this.CodEquipe = CodEquipe;
     }
+    
 
     public int getIdDoColab() {
         return CodColab;

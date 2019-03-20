@@ -266,7 +266,7 @@ public class Dao extends ConnectionFactory {
                 c.setEnderecoColaborador(rs.getString("endCol"));
                 c.setBairroColaborador(rs.getString("baiCol"));
                 c.setEmailColaborador(rs.getString("emailCol"));
-                c.setCodEquipe(rs.getInt("idEqp"));
+                c.setCodEquipe(rs.getString("idEqp"));
                 
                 colaborador.add(c);
             }
@@ -298,7 +298,7 @@ public class Dao extends ConnectionFactory {
                     colaborador.setEnderecoColaborador(rs.getString("endCol"));
                     colaborador.setBairroColaborador(rs.getString("baiCol"));
                     colaborador.setEmailColaborador(rs.getString("emailCol"));
-                    colaborador.setCodEquipe(rs.getInt("idEqp"));
+                    colaborador.setCodEquipe(rs.getString("idEqp"));
                     
                 }
             }
@@ -327,7 +327,7 @@ public class Dao extends ConnectionFactory {
             st.setString(6,col.getEnderecoColaborador());
             st.setString(7,col.getBairroColaborador());
             st.setString(8, col.getEmailColaborador());
-            //st.setInt(9,col.getIdDoColab());
+            st.setString(9, col.getCodEquipe());
                             
             st.execute();
             st.close();     
