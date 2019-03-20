@@ -63,7 +63,6 @@ public class FramePrincipal extends javax.swing.JFrame {
         jListarEquipe = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jAddTarefa = new javax.swing.JMenuItem();
-        ListarTarefas = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jAgendaColab = new javax.swing.JMenuItem();
         jAgendaEquipes = new javax.swing.JMenuItem();
@@ -130,15 +129,6 @@ public class FramePrincipal extends javax.swing.JFrame {
         });
         jMenu3.add(jAddTarefa);
 
-        ListarTarefas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F7, 0));
-        ListarTarefas.setText("Listar Tarefas Colaboradores");
-        ListarTarefas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ListarTarefasActionPerformed(evt);
-            }
-        });
-        jMenu3.add(ListarTarefas);
-
         jMenuBar1.add(jMenu3);
 
         jMenu1.setText("Agenda");
@@ -185,7 +175,8 @@ public class FramePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuCadColActionPerformed
 
     private void jAgendaColabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAgendaColabActionPerformed
-        // TODO add your handling code here:
+        CardLayout cl = (CardLayout) painelPrincipal.getLayout();
+        cl.show(painelPrincipal, "ListagemTarefas");
     }//GEN-LAST:event_jAgendaColabActionPerformed
 
     private void jAddTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddTarefaActionPerformed
@@ -207,11 +198,6 @@ public class FramePrincipal extends javax.swing.JFrame {
         CardLayout cl = (CardLayout) painelPrincipal.getLayout();
         cl.show(painelPrincipal, "PainelListagemColaboradores");
     }//GEN-LAST:event_jListarColabActionPerformed
-
-    private void ListarTarefasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListarTarefasActionPerformed
-        CardLayout cl = (CardLayout) painelPrincipal.getLayout();
-        cl.show(painelPrincipal, "ListagemTarefas");
-    }//GEN-LAST:event_ListarTarefasActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -246,7 +232,6 @@ public class FramePrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem ListarTarefas;
     private javax.swing.JMenuItem jAddTarefa;
     private javax.swing.JMenuItem jAgendaColab;
     private javax.swing.JMenuItem jAgendaEquipes;
