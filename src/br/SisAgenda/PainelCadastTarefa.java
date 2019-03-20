@@ -1,15 +1,20 @@
 package br.SisAgenda;
 
+import br.SisAgenda.dao.Dao;
 import br.SisAgenda.modelo.Tarefa;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class PainelCadastTarefa extends javax.swing.JPanel {
 
     public PainelCadastTarefa() {
         initComponents();
-        
+
         jComboBoxAddPara.addItem("Colaborador");
-        jComboBoxAddPara.addItem("Equipe");    
+        jComboBoxAddPara.addItem("Equipe");
     }
 
     @SuppressWarnings("unchecked")
@@ -60,7 +65,7 @@ public class PainelCadastTarefa extends javax.swing.JPanel {
         });
 
         try {
-            cpDataInicial.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/#### ##:##:##")));
+            cpDataInicial.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####/##/## ##:##:##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -71,7 +76,7 @@ public class PainelCadastTarefa extends javax.swing.JPanel {
         });
 
         try {
-            cpDataEntrega.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/#### ##:##:##")));
+            cpDataEntrega.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####/##/## ##:##:##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -180,29 +185,50 @@ public class PainelCadastTarefa extends javax.swing.JPanel {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         Tarefa tr = new Tarefa();
         String QualTipoTarefa = jComboBoxAddPara.getSelectedItem().toString();
+
+        //formatação das datas//espero q funcione
+        //SimpleDateFormat formatador = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        //String dataCri = cpDataInicial.getText();
+        //String dataTxt = formatador.format(dataCri);
+ 
         
         tr.setTitAge(cpTitulo.getText());
         tr.setDesAge(cpDescricao.getText());
-        
-        String dataCri = cpDataInicial.getText();
-        //dataCri = dataCri.replaceAll("/" , "");
-        //dataCri = dataCri.replaceAll(":" , "");
-        
+
+        //formatação das datas//espero q funcione
+        //String dataCri = cpDataInicial.getText();
+        //dataCri = dataCri.replaceAll("/", "");
+        //dataCri = dataCri.replaceAll(":", "");
+
         String dataEnt = cpDataEntrega.getText();
-        //dataEnt = dataEnt.replaceAll("/" , "");
-        //dataEnt = dataEnt.replaceAll(":" , "");
-        //System.out.println(dataEnt);
-        if(QualTipoTarefa.equals("Colaborador")){
-            int idc = Integer.parseInt(cpTipoId.getText());
-            tr.setColab(idc);
-            int idce = 0;
-            tr.setEquipe(idce);
-        }else if(QualTipoTarefa.equals("Equipe")){
-             int ide = Integer.parseInt(cpTipoId.getText());
+        //dataEnt = dataEnt.replaceAll("/", "");
+        //dataEnt = dataEnt.replaceAll(":", "");
+
+        //inserçao de dados pro Sql
+        if (QualTipoTarefa.equals("Equipe")) {
+            int ide = Integer.parseInt(cpTipoId.getText());
             tr.setEquipe(ide);
             int idec = 0;
             tr.setColab(idec);
-        }    
+        } else if (QualTipoTarefa.equals("Colaborador")) {
+            int idce = 0;
+            tr.setEquipe(idce);
+            int idc = Integer.parseInt(cpTipoId.getText());
+            tr.setColab(idc);
+        }
+        tr.setDataCri(cpDataInicial.getText());
+        tr.setDataEnt(cpDataEntrega.getText());
+        tr.setTitAge(cpTitulo.getText());
+        tr.setDesAge(cpDescricao.getText());
+        
+        Dao dao = new Dao();
+        try {
+            dao.inserir(tr);
+            javax.swing.JOptionPane.showMessageDialog(null, "tarefa inserida com sucesso !");
+        } catch (SQLException ex) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Falha ao inserir uma Tarefa !");
+            Logger.getLogger(PainelCadastEquipe.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void cpDataEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpDataEntregaActionPerformed
@@ -219,10 +245,10 @@ public class PainelCadastTarefa extends javax.swing.JPanel {
 
     private void jComboBoxAddParaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxAddParaItemStateChanged
         String QualTipoTarefa = jComboBoxAddPara.getSelectedItem().toString();
-        if(QualTipoTarefa.equals("Colaborador")){
+        if (QualTipoTarefa.equals("Colaborador")) {
             System.out.println(QualTipoTarefa);
-        }else if(QualTipoTarefa.equals("Equipe")){
-             System.out.println(QualTipoTarefa);
+        } else if (QualTipoTarefa.equals("Equipe")) {
+            System.out.println(QualTipoTarefa);
         }
     }//GEN-LAST:event_jComboBoxAddParaItemStateChanged
 
