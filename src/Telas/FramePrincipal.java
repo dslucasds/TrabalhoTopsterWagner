@@ -23,7 +23,6 @@ public class FramePrincipal extends javax.swing.JFrame {
         PainelCadastEquipe cadEquipe = new PainelCadastEquipe();
         PainelCadastTarefa cadTaref = new PainelCadastTarefa();
 
-        PainelListagemColab LisColab = new PainelListagemColab();
         ListagemEquip lisEquip = new ListagemEquip();
         ListagemTarefaColab lisTaref = new ListagemTarefaColab();
         ListagemTarefaEquip lisTarefEqp = new ListagemTarefaEquip();
@@ -34,7 +33,6 @@ public class FramePrincipal extends javax.swing.JFrame {
         painelPrincipal.add(cadTaref, "PainelCadastTarefa");
 
         //Paineis de Listagens
-        painelPrincipal.add(LisColab, "PainelListagemColaboradores");
         painelPrincipal.add(lisEquip, "ListagemEquip");
         painelPrincipal.add(lisTaref, "ListagemTarefas");
         painelPrincipal.add(lisTarefEqp, "ListagemTarefasEqp");
@@ -195,7 +193,7 @@ public class FramePrincipal extends javax.swing.JFrame {
     private void jListarEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jListarEquipeActionPerformed
         ListagemEquip lisEquip = new ListagemEquip();
         painelPrincipal.add(lisEquip, "ListagemEquip");
-        
+
         CardLayout cl = (CardLayout) painelPrincipal.getLayout();
         cl.show(painelPrincipal, "ListagemEquip");
     }//GEN-LAST:event_jListarEquipeActionPerformed
@@ -206,6 +204,9 @@ public class FramePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jCadastroEquipeActionPerformed
 
     private void jListarColabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jListarColabActionPerformed
+        PainelListagemColab LisColab = new PainelListagemColab();
+        painelPrincipal.add(LisColab, "PainelListagemColaboradores");
+
         CardLayout cl = (CardLayout) painelPrincipal.getLayout();
         cl.show(painelPrincipal, "PainelListagemColaboradores");
     }//GEN-LAST:event_jListarColabActionPerformed

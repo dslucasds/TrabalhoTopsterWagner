@@ -281,7 +281,7 @@ public class Dao extends ConnectionFactory {
     }
 
     public Colaborador getColaborador(int idCol) throws SQLException {
-        String sql = "select * from  where idCol = ?";
+        String sql = "select * from colaborador where idCol = ?";
         Colaborador colaborador = null;
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
@@ -307,6 +307,20 @@ public class Dao extends ConnectionFactory {
 
         this.con.close();
         return colaborador;
+    }
+    
+        public void eliminarColaborador(int idCol) throws SQLException {
+
+        String sql = "delete from colaborador where idCol = ?";
+
+        try (PreparedStatement st = this.con.prepareStatement(sql)) {
+            st.setInt(1, idCol);
+            st.execute();
+            st.close();
+        }
+
+        this.con.close();
+
     }
 
     //INSERIR COLABORADOR//
@@ -337,7 +351,7 @@ public class Dao extends ConnectionFactory {
 
     }
 
-    //ALTERAR TAREFA//
+    //ALTERAR COLABORADOR//
     public void alterar(Colaborador col) throws SQLException {
 
         //String sql2 = "insert into colaborador "
@@ -345,9 +359,9 @@ public class Dao extends ConnectionFactory {
          //       + "senhaCol, endCol, baiCol, emailCol, idEqp)"
           //      + "values (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
-        String sql = "update colaborador set tipoCol = ?, nomCol = ?"
-                + "loginCol = ?, senhaCol = ?, endCol = ?, baiCol = ?"
-                + ", emailCol = ? where idEqp = ? ";
+        String sql = "update colaborador set tipoCol = ?, nomCol = ?, "
+                + "loginCol = ?, senhaCol = ?, endCol = ?, baiCol = ?, "
+                + "emailCol = ?, idEqp = ? where idCol = ?;";
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
 
@@ -359,7 +373,7 @@ public class Dao extends ConnectionFactory {
             st.setString(5,col.getEnderecoColaborador());
             st.setString(6,col.getBairroColaborador());
             st.setString(7, col.getEmailColaborador());
-            st.setInt(8,col.getIdDoColab());
+            st.setString(8, col.getCodEquipe());
             st.setInt(9, col.getIdDoColab());
             st.execute();
             st.close();
