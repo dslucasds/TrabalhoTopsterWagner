@@ -2,6 +2,7 @@ package Telas;
 
 import br.SisAgenda.ListagemEquip;
 import br.SisAgenda.ListagemTarefaColab;
+import br.SisAgenda.ListagemTarefaEquip;
 import br.SisAgenda.PainelCadastColab;
 import br.SisAgenda.PainelCadastEquipe;
 import br.SisAgenda.PainelCadastTarefa;
@@ -25,6 +26,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         PainelListagemColab LisColab = new PainelListagemColab();
         ListagemEquip lisEquip = new ListagemEquip();
         ListagemTarefaColab lisTaref = new ListagemTarefaColab();
+        ListagemTarefaEquip lisTarefEqp = new ListagemTarefaEquip();
 
         //os paineis de cadastros
         painelPrincipal.add(cadColab, "PainelCadastColab");
@@ -35,7 +37,8 @@ public class FramePrincipal extends javax.swing.JFrame {
         painelPrincipal.add(LisColab, "PainelListagemColaboradores");
         painelPrincipal.add(lisEquip, "ListagemEquip");
         painelPrincipal.add(lisTaref, "ListagemTarefas");
-
+        painelPrincipal.add(lisTarefEqp, "ListagemTarefasEqp");
+        
 
         CardLayout cl = (CardLayout) painelPrincipal.getLayout();
         cl.show(painelPrincipal, "telaPadrao");
@@ -144,6 +147,11 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         jAgendaEquipes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F9, 0));
         jAgendaEquipes.setText("Equipes");
+        jAgendaEquipes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAgendaEquipesActionPerformed(evt);
+            }
+        });
         jMenu1.add(jAgendaEquipes);
 
         jMenuBar1.add(jMenu1);
@@ -201,6 +209,11 @@ public class FramePrincipal extends javax.swing.JFrame {
         CardLayout cl = (CardLayout) painelPrincipal.getLayout();
         cl.show(painelPrincipal, "PainelListagemColaboradores");
     }//GEN-LAST:event_jListarColabActionPerformed
+
+    private void jAgendaEquipesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAgendaEquipesActionPerformed
+        CardLayout cl = (CardLayout) painelPrincipal.getLayout();
+        cl.show(painelPrincipal, "ListagemTarefasEqp");
+    }//GEN-LAST:event_jAgendaEquipesActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

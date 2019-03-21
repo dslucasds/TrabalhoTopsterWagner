@@ -11,22 +11,24 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
 public class ListagemTarefaColab extends javax.swing.JPanel {
 
     private CardLayout cl;
     private int id;
-   
+
     public ListagemTarefaColab() {
+        Tarefa t = new Tarefa();
         initComponents();
-        
+
         this.add(painelListagemTarefaColab, "painelListagemTarefa");
         this.cl = (CardLayout) this.getLayout();
         this.cl.show(this, "painelListagemTarefa");
-        
+
         this.popularTabelaTarefa();
-}
-        private void popularTabelaTarefa() {
+
+    }
+
+    private void popularTabelaTarefa() {
         Dao trf = new Dao();
         List<Tarefa> listaTarefa;
 
@@ -38,9 +40,10 @@ public class ListagemTarefaColab extends javax.swing.JPanel {
 
             for (int i = 0; i < listaTarefa.size(); i++) {
                 Tarefa t = listaTarefa.get(i);
-                lista.add(new Object[]{t.getColab(), t.getTitAge(),
-                    t.getDesAge(),t.getDataCri(),t.getDataEnt(),
-                    });
+                if (t.getEquipe() == 0) {
+                    lista.add(new Object[]{t.getColab(), t.getTitAge(),
+                        t.getDesAge(), t.getDataCri(), t.getDataEnt(),});
+                }
             }
 
             for (int idx = 0; idx < lista.size(); idx++) {
@@ -52,10 +55,10 @@ public class ListagemTarefaColab extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, msg);
             Logger.getLogger(ListagemTarefaColab.class.getName()).log(Level.SEVERE, null, ex);
         }
-            
-       
+
     }
-        private void limparTabelaTarefa() {
+
+    private void limparTabelaTarefa() {
         ((DefaultTableModel) tblTarefa.getModel()).setNumRows(0);
         tblTarefa.updateUI();
     }
@@ -81,8 +84,6 @@ public class ListagemTarefaColab extends javax.swing.JPanel {
         cpTitulo = new javax.swing.JTextField();
         cpDescricao = new javax.swing.JTextField();
         cpDataEntrega = new javax.swing.JFormattedTextField();
-        jComboBoxAddPara = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         cpTipoId = new javax.swing.JTextField();
 
@@ -110,15 +111,15 @@ public class ListagemTarefaColab extends javax.swing.JPanel {
         painelListagemTarefaColab.setLayout(painelListagemTarefaColabLayout);
         painelListagemTarefaColabLayout.setHorizontalGroup(
             painelListagemTarefaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 420, Short.MAX_VALUE)
+            .addGap(0, 458, Short.MAX_VALUE)
             .addGroup(painelListagemTarefaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE))
         );
         painelListagemTarefaColabLayout.setVerticalGroup(
             painelListagemTarefaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 322, Short.MAX_VALUE)
+            .addGap(0, 246, Short.MAX_VALUE)
             .addGroup(painelListagemTarefaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE))
         );
 
         add(painelListagemTarefaColab, "card2");
@@ -140,7 +141,7 @@ public class ListagemTarefaColab extends javax.swing.JPanel {
         });
 
         lblTituloAdicionarTarefa.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblTituloAdicionarTarefa.setText("EDITAR TAREFAS");
+        lblTituloAdicionarTarefa.setText("EDITAR TAREFAS COLABORADORES");
 
         cpTitulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,21 +160,6 @@ public class ListagemTarefaColab extends javax.swing.JPanel {
             }
         });
 
-        jComboBoxAddPara.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione"}));
-        jComboBoxAddPara.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jComboBoxAddParaItemStateChanged(evt);
-            }
-        });
-        jComboBoxAddPara.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxAddParaActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Adicionar Para:");
-
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("ID:");
 
@@ -186,52 +172,52 @@ public class ListagemTarefaColab extends javax.swing.JPanel {
                 .addComponent(lblTituloAdicionarTarefa)
                 .addGap(119, 119, 119))
             .addGroup(painelEdiçãoAgendaColabLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(painelEdiçãoAgendaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(lblDataFinal)
-                    .addComponent(lblTitulo)
-                    .addComponent(lblDescricao))
-                .addGap(22, 22, 22)
                 .addGroup(painelEdiçãoAgendaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelEdiçãoAgendaColabLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(painelEdiçãoAgendaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblDescricao)
+                            .addComponent(jLabel2)
+                            .addComponent(lblTitulo)))
+                    .addComponent(lblDataFinal))
+                .addGap(32, 32, 32)
+                .addGroup(painelEdiçãoAgendaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(painelEdiçãoAgendaColabLayout.createSequentialGroup()
                         .addComponent(cpDataEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(38, 38, 38)
                         .addComponent(btnSalvar))
-                    .addComponent(cpDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cpTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxAddPara, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cpTipoId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(painelEdiçãoAgendaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(cpTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cpTipoId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cpDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         painelEdiçãoAgendaColabLayout.setVerticalGroup(
             painelEdiçãoAgendaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelEdiçãoAgendaColabLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblTituloAdicionarTarefa)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(painelEdiçãoAgendaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBoxAddPara, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblTituloAdicionarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelEdiçãoAgendaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(cpTipoId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
-                .addGroup(painelEdiçãoAgendaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTitulo)
-                    .addComponent(cpTitulo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(painelEdiçãoAgendaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cpTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addGroup(painelEdiçãoAgendaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblDescricao)
-                    .addComponent(cpDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addGroup(painelEdiçãoAgendaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDataFinal)
-                    .addComponent(cpDataEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalvar))
-                .addGap(18, 18, 18))
+                    .addGroup(painelEdiçãoAgendaColabLayout.createSequentialGroup()
+                        .addComponent(cpDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(painelEdiçãoAgendaColabLayout.createSequentialGroup()
+                        .addComponent(lblDescricao)
+                        .addGap(69, 69, 69)
+                        .addGroup(painelEdiçãoAgendaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblDataFinal)
+                            .addComponent(cpDataEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSalvar))
+                        .addContainerGap(28, Short.MAX_VALUE))))
         );
 
         add(painelEdiçãoAgendaColab, "card3");
@@ -239,23 +225,17 @@ public class ListagemTarefaColab extends javax.swing.JPanel {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         Tarefa tr = new Tarefa();
-        String QualTipoTarefa = jComboBoxAddPara.getSelectedItem().toString();
+        String QualTipoTarefa = "Colaborador";
 
         tr.setTitAge(cpTitulo.getText());
         tr.setDesAge(cpDescricao.getText());
 
         //inserçao de dados pro Sql
-        if (QualTipoTarefa.equals("Equipe")) {
-            int ide = Integer.parseInt(cpTipoId.getText());
-            tr.setEquipe(ide);
-            int idec = 0;
-            tr.setColab(idec);
-        } else if (QualTipoTarefa.equals("Colaborador")) {
             int idce = 0;
             tr.setEquipe(idce);
             int idc = Integer.parseInt(cpTipoId.getText());
             tr.setColab(idc);
-        }
+        
         tr.setDataEnt(cpDataEntrega.getText());
         tr.setTitAge(cpTitulo.getText());
         tr.setDesAge(cpDescricao.getText());
@@ -265,9 +245,9 @@ public class ListagemTarefaColab extends javax.swing.JPanel {
         Dao dao = new Dao();
         try {
             dao.alterar(tr);
-            javax.swing.JOptionPane.showMessageDialog(null, "tarefa inserida com sucesso !");
+            javax.swing.JOptionPane.showMessageDialog(null, "tarefa Alternada com sucesso !");
         } catch (SQLException ex) {
-            javax.swing.JOptionPane.showMessageDialog(null, "Falha ao inserir uma Tarefa !");
+            javax.swing.JOptionPane.showMessageDialog(null, "Falha ao alterar uma Tarefa !");
             Logger.getLogger(PainelCadastEquipe.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
@@ -280,19 +260,6 @@ public class ListagemTarefaColab extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_cpDataEntregaActionPerformed
 
-    private void jComboBoxAddParaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxAddParaItemStateChanged
-        String QualTipoTarefa = jComboBoxAddPara.getSelectedItem().toString();
-        if (QualTipoTarefa.equals("Colaborador")) {
-            System.out.println(QualTipoTarefa);
-        } else if (QualTipoTarefa.equals("Equipe")) {
-            System.out.println(QualTipoTarefa);
-        }
-    }//GEN-LAST:event_jComboBoxAddParaItemStateChanged
-
-    private void jComboBoxAddParaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAddParaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxAddParaActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalvar;
@@ -300,8 +267,6 @@ public class ListagemTarefaColab extends javax.swing.JPanel {
     private javax.swing.JTextField cpDescricao;
     private javax.swing.JTextField cpTipoId;
     private javax.swing.JTextField cpTitulo;
-    private javax.swing.JComboBox<String> jComboBoxAddPara;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDataFinal;
