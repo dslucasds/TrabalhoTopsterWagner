@@ -20,6 +20,8 @@ public class PainelListagemColab extends javax.swing.JPanel {
 
     public PainelListagemColab() {
         initComponents();
+        ComboBoxTipoColab.addItem("Administrador");
+        ComboBoxTipoColab.addItem("Usario");
        
         this.add(PainelListagem, "PainelListagem");
         this.add(PainelEdicaoListagem,"PainelEdicaoListagem");
@@ -367,8 +369,9 @@ public class PainelListagemColab extends javax.swing.JPanel {
     }//GEN-LAST:event_jSenhaColabActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        String TipoCol = (String)ComboBoxTipoColab.getSelectedItem();
         Colaborador Col = new Colaborador();
-        //Col.setTipoUsuario()
+        Col.setTipoUsuario(TipoCol);
         Col.setNomeColaborador(jNomeColab.getText());
         Col.setEnderecoColaborador(jEndColab.getText());
         Col.setBairroColaborador(jBairroColab.getText());
