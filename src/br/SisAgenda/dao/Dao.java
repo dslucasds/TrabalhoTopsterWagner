@@ -167,7 +167,7 @@ public class Dao extends ConnectionFactory {
     }
 
     public Tarefa getTarefa(int idEqp) throws SQLException {
-        String sql = "select * from  where idEqp = ?";
+        String sql = "select * from agenda where idEqp = ?";
         Tarefa tarefa = null;
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
@@ -213,25 +213,22 @@ public class Dao extends ConnectionFactory {
 
     }
 
-    //ALTERAR TAREFA//
-    public void alterar(Tarefa trf) throws SQLException {
+    //ALTERAR TAREFA COLABORADOR//
+    public void alterarTarefaColaborador (Tarefa trf) throws SQLException {
 
-        String sql2 = "insert into agenda "
-               + "(dataCri, dataEnt, titAge, desAge, "
-              + "idEqp, idCol) "
-              + "values (?, ?, ?, ?, ?, ?);";
-
-        String sql = "update agenda set dataCri = ?, dataEnt = ?, titAge = ?"
-                + "desAge = ?, idEqp = ?, idCol = ? ";
-
+        String sql = "update agenda set dataEnt = ?, titAge = ?,"
+                + "desAge = ? where idCol = ? and idEqp = ? and dataCri = ?;";
+                
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
 
-            st.setString(1, trf.getDataCri());
-            st.setString(2, trf.getDataEnt());
-            st.setString(3, trf.getTitAge());
-            st.setString(4, trf.getDesAge());
+            st.setString(1, trf.getDataEnt());
+            st.setString(2, trf.getTitAge());
+            st.setString(3, trf.getDesAge());
+           
+            st.setInt(4, trf.getColab());
             st.setInt(5, trf.getEquipe());
-            st.setInt(6, trf.getColab());
+            st.setString(6, trf.getDataCri());
+            
             st.execute();
             st.close();
 
@@ -240,6 +237,66 @@ public class Dao extends ConnectionFactory {
         this.con.close();
 
     }
+    //ALTERAR TAREFA EQUIPE//
+         public void alterarTarefaEquipe (Tarefa trf) throws SQLException {
+
+       
+        String sql = "update agenda set dataEnt = ?, titAge = ?"
+                + "desAge = ? where idEqp = ? and idCol = ?, and dataCri = ?;";
+
+        try (PreparedStatement st = this.con.prepareStatement(sql)) {
+
+            st.setString(1, trf.getDataEnt());
+            st.setString(2, trf.getTitAge());
+            st.setString(3, trf.getDesAge());
+            
+            st.setInt(4, trf.getEquipe());
+            st.setInt(5, trf.getColab());
+            st.setString(6, trf.getDataCri());
+            
+            st.execute();
+            st.close();
+
+        }
+
+        this.con.close();
+
+    }
+    
+    
+    
+    
+    //ELIMINAR TAREFA COLABORADOR//
+        public void eliminarTarefaColaborador(Tarefa trf) throws SQLException {
+
+        String sql = "delete from agenda where idCol = ? and dataCri = ?;";
+
+        try (PreparedStatement st = this.con.prepareStatement(sql)) {
+            st.setInt(1, trf.getColab());
+            st.setString(2,trf.getDataCri());
+            st.execute();
+            st.close();
+        }
+
+        this.con.close();
+        
+    }
+        
+        //ELIMINAR TAREFA EQUIPE//
+        public void eliminarTarefaEquipe(Tarefa trf) throws SQLException {
+
+        String sql = "delete from agenda where idEqp = ? and dataCri = ?;";
+
+        try (PreparedStatement st = this.con.prepareStatement(sql)) {
+            st.setInt(1, trf.getEquipe());
+            st.setString(2,trf.getDataCri());
+            st.execute();
+            st.close();
+        }
+
+        this.con.close();
+        }
+            
     
     ////////////////////////DAO TAREFA FINAL///////////////////////////////////
     

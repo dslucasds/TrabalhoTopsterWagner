@@ -181,8 +181,13 @@ public class FramePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuCadColActionPerformed
 
     private void jAgendaColabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAgendaColabActionPerformed
+        ListagemTarefaColab lisTaref = new ListagemTarefaColab();
+         painelPrincipal.add(lisTaref, "ListagemTarefas");
+         
         CardLayout cl = (CardLayout) painelPrincipal.getLayout();
         cl.show(painelPrincipal, "ListagemTarefas");
+        
+        
     }//GEN-LAST:event_jAgendaColabActionPerformed
 
     private void jAddTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddTarefaActionPerformed
@@ -212,6 +217,9 @@ public class FramePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jListarColabActionPerformed
 
     private void jAgendaEquipesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAgendaEquipesActionPerformed
+        ListagemTarefaEquip lisTarefEqp = new ListagemTarefaEquip();
+        painelPrincipal.add(lisTarefEqp, "ListagemTarefasEqp");
+        
         CardLayout cl = (CardLayout) painelPrincipal.getLayout();
         cl.show(painelPrincipal, "ListagemTarefasEqp");
     }//GEN-LAST:event_jAgendaEquipesActionPerformed

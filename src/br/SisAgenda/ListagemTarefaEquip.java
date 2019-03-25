@@ -14,16 +14,19 @@ public class ListagemTarefaEquip extends javax.swing.JPanel {
 
     private CardLayout cl;
     private int id;
+     private Tarefa tarefaGlobal;
 
     public ListagemTarefaEquip() {
         initComponents();
 
         this.add(painelListagemTarefaEqp, "painelListagemTarefaEqp");
+        this.add(painelEdiçãoAgendaEquip, "painelEdiçãoAgendaEquip");
+        
         this.cl = (CardLayout) this.getLayout();
         this.cl.show(this, "painelListagemTarefaEqp");
-
-        //ainda nao tem essa função
+        
         this.popularTabelaTarefa();
+       
     }
 
     private void popularTabelaTarefa() {
@@ -55,6 +58,11 @@ public class ListagemTarefaEquip extends javax.swing.JPanel {
         }
 
     }
+    
+         private void limparTabelaTarefa() {
+        ((DefaultTableModel) TblTarefEqp.getModel()).setNumRows(0);
+        TblTarefEqp.updateUI();
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -67,13 +75,14 @@ public class ListagemTarefaEquip extends javax.swing.JPanel {
         lblTitulo = new javax.swing.JLabel();
         lblDescricao = new javax.swing.JLabel();
         lblDataFinal = new javax.swing.JLabel();
-        btnEditar = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
         lblTituloAdicionarTarefa = new javax.swing.JLabel();
         cpTitulo = new javax.swing.JTextField();
         cpDescricao = new javax.swing.JTextField();
         cpDataEntrega = new javax.swing.JFormattedTextField();
         jLabel2 = new javax.swing.JLabel();
         cpTipoId = new javax.swing.JTextField();
+        btnApagar = new javax.swing.JButton();
 
         setLayout(new java.awt.CardLayout());
 
@@ -88,9 +97,26 @@ public class ListagemTarefaEquip extends javax.swing.JPanel {
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        TblTarefEqp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TblTarefEqpMouseClicked(evt);
+            }
+        });
+        TblTarefEqp.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                TblTarefEqpComponentShown(evt);
             }
         });
         jScrollPane2.setViewportView(TblTarefEqp);
@@ -117,10 +143,10 @@ public class ListagemTarefaEquip extends javax.swing.JPanel {
         lblDataFinal.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblDataFinal.setText("Data Entrega:");
 
-        btnEditar.setText("Editar");
-        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+        btnSalvar.setText("SALVAR");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarActionPerformed(evt);
+                btnSalvarActionPerformed(evt);
             }
         });
 
@@ -147,6 +173,13 @@ public class ListagemTarefaEquip extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("ID:");
 
+        btnApagar.setText("APAGAR");
+        btnApagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnApagarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout painelEdiçãoAgendaEquipLayout = new javax.swing.GroupLayout(painelEdiçãoAgendaEquip);
         painelEdiçãoAgendaEquip.setLayout(painelEdiçãoAgendaEquipLayout);
         painelEdiçãoAgendaEquipLayout.setHorizontalGroup(
@@ -170,8 +203,10 @@ public class ListagemTarefaEquip extends javax.swing.JPanel {
                 .addGap(31, 31, 31))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelEdiçãoAgendaEquipLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnEditar)
-                .addGap(117, 117, 117))
+                .addComponent(btnSalvar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnApagar)
+                .addGap(46, 46, 46))
         );
         painelEdiçãoAgendaEquipLayout.setVerticalGroup(
             painelEdiçãoAgendaEquipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,40 +230,41 @@ public class ListagemTarefaEquip extends javax.swing.JPanel {
                     .addComponent(lblDataFinal)
                     .addComponent(cpDataEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnEditar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(painelEdiçãoAgendaEquipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvar)
+                    .addComponent(btnApagar))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         add(painelEdiçãoAgendaEquip, "card3");
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        Tarefa tr = new Tarefa();
-        //String QualTipoTarefa = jComboBoxAddPara.getSelectedItem().toString();
-
-        tr.setTitAge(cpTitulo.getText());
-        tr.setDesAge(cpDescricao.getText());
-
-            int ide = Integer.parseInt(cpTipoId.getText());
-            tr.setEquipe(ide);
-            int idec = 0;
-            tr.setColab(idec);
-       
-
-        tr.setDataEnt(cpDataEntrega.getText());
-        tr.setTitAge(cpTitulo.getText());
-        tr.setDesAge(cpDescricao.getText());
-
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        this.tarefaGlobal.setTitAge(cpTitulo.getText());
+        this.tarefaGlobal.setDesAge(cpDescricao.getText());
+        
+        //this.tarefaGlobal.setDataEnt(cpDataEntrega.getText());
+        
+        //provavelmente tenho q mudar o dao do inserir pq nao ocorre nenhuma mudança na data de criaçao
+        //somente na de entrega
         Dao dao = new Dao();
         try {
-            dao.inserir(tr);
-            javax.swing.JOptionPane.showMessageDialog(null, "tarefa Alternada com sucesso !");
+            dao.alterarTarefaColaborador(this.tarefaGlobal);
+            javax.swing.JOptionPane.showMessageDialog(null, "Tarefa alterada com sucesso !");
         } catch (SQLException ex) {
-            javax.swing.JOptionPane.showMessageDialog(null, "Falha ao Alterar uma Tarefa !");
+            javax.swing.JOptionPane.showMessageDialog(null, "Falha ao alterar uma Tarefa !");
             Logger.getLogger(PainelCadastEquipe.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_btnEditarActionPerformed
-
+                                             
+        
+    }//GEN-LAST:event_btnSalvarActionPerformed
+        private void preencherFormulario(Tarefa tarefa) {
+        cpTitulo.setText(tarefa.getTitAge());
+        cpDescricao.setText(tarefa.getDesAge());
+        cpDataEntrega.setText(tarefa.getDataEnt());
+        this.tarefaGlobal = tarefa;
+    }
+        
     private void cpTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpTituloActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cpTituloActionPerformed
@@ -237,10 +273,61 @@ public class ListagemTarefaEquip extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_cpDataEntregaActionPerformed
 
+    private void btnApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApagarActionPerformed
+        Object[] options = {"Sim", "Não"};
+        int opcaoSelecionada = javax.swing.JOptionPane.showOptionDialog(null, "Deseja realmente eliminar esta tarefa ?", "Atenção!", javax.swing.JOptionPane.DEFAULT_OPTION, javax.swing.JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+
+        if (opcaoSelecionada == 0) {
+            Dao dao = new Dao();
+
+            try {
+                dao.eliminarTarefaEquipe(this.tarefaGlobal);
+                this.limparTabelaTarefa();
+
+                this.cl.show(this, "painelListagemTarefaEquip");
+            } catch (SQLException ex) {
+                Logger.getLogger(ListagemTarefaColab.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+    }//GEN-LAST:event_btnApagarActionPerformed
+
+    private void TblTarefEqpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblTarefEqpMouseClicked
+        
+        //AJUSTAR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
+        
+        int linha = TblTarefEqp.getSelectedRow();
+
+        if (linha != -1) {
+            String idColaborador = TblTarefEqp.getValueAt(linha, 0).toString();
+            String idEquipe = TblTarefEqp.getValueAt(linha, 5).toString();
+
+            int idColaboradorInt = Integer.parseInt(idColaborador);
+            int idEquipeInt = Integer.parseInt(idEquipe);
+
+            Tarefa trf = new Tarefa();
+            trf.setColab(idColaboradorInt);
+            trf.setTitAge(TblTarefEqp.getValueAt(linha, 1).toString());
+            trf.setDesAge(TblTarefEqp.getValueAt(linha, 2).toString());
+            trf.setDataCri(TblTarefEqp.getValueAt(linha, 3).toString());
+            trf.setDataEnt(TblTarefEqp.getValueAt(linha, 4).toString());
+            trf.setEquipe(idEquipeInt);
+
+            this.preencherFormulario(trf);
+            this.add(painelListagemTarefaEqp, "painelListagemTarefaEqp");
+            this.cl.show(this, "painelEdiçãoAgendaEquip");
+        }
+    }//GEN-LAST:event_TblTarefEqpMouseClicked
+
+    private void TblTarefEqpComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_TblTarefEqpComponentShown
+       this.popularTabelaTarefa();
+    }//GEN-LAST:event_TblTarefEqpComponentShown
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TblTarefEqp;
-    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnApagar;
+    private javax.swing.JButton btnSalvar;
     private javax.swing.JFormattedTextField cpDataEntrega;
     private javax.swing.JTextField cpDescricao;
     private javax.swing.JTextField cpTipoId;

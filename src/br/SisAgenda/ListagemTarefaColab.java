@@ -17,19 +17,18 @@ public class ListagemTarefaColab extends javax.swing.JPanel {
 
     private CardLayout cl;
     private int id;
+    private Tarefa tarefaGlobal;
 
     public ListagemTarefaColab() {
-        Tarefa t = new Tarefa();
-        initComponents();
+         initComponents();
 
         this.add(painelListagemTarefaColab, "painelListagemTarefa");
         this.add(painelEdiçãoAgendaColab, "painelEdiçaoTarefColab");
-        
+
         this.cl = (CardLayout) this.getLayout();
         this.cl.show(this, "painelListagemTarefa");
 
-        //this.popularTabelaTarefa();
-
+       
     }
 
     private void popularTabelaTarefa() {
@@ -46,7 +45,7 @@ public class ListagemTarefaColab extends javax.swing.JPanel {
                 Tarefa t = listaTarefa.get(i);
                 if (t.getEquipe() == 0) {
                     lista.add(new Object[]{t.getColab(), t.getTitAge(),
-                        t.getDesAge(), t.getDataCri(), t.getDataEnt(),});
+                        t.getDesAge(), t.getDataCri(), t.getDataEnt(), t.getEquipe()});
                 }
             }
 
@@ -105,15 +104,22 @@ public class ListagemTarefaColab extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Id Colaborador", "Título", "Descrição", "Data Inicial", "Data de Entrega"
+                "Id Colaborador", "Título", "Descrição", "Data Inicial", "Data de Entrega", "Id Equipe"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         tblTarefa.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -232,16 +238,15 @@ public class ListagemTarefaColab extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelEdiçãoAgendaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cpTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                    .addComponent(cpTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(painelEdiçãoAgendaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cpDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(painelEdiçãoAgendaColabLayout.createSequentialGroup()
-                        .addComponent(lblDescricao)
-                        .addGap(70, 70, 70)
-                        .addGroup(painelEdiçãoAgendaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblDataFinal)
-                            .addComponent(cpDataEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(lblDescricao)
+                    .addComponent(cpDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(46, 46, 46)
+                .addGroup(painelEdiçãoAgendaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDataFinal)
+                    .addComponent(cpDataEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(painelEdiçãoAgendaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ApagarBtn, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -253,55 +258,32 @@ public class ListagemTarefaColab extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        Tarefa tr = new Tarefa();
         String QualTipoTarefa = "Colaborador";
 
-        tr.setTitAge(cpTitulo.getText());
-        tr.setDesAge(cpDescricao.getText());
-
-        //inserçao de dados pro Sql
-            int idce = 0;
-            tr.setEquipe(idce);
-            int idc = Integer.parseInt(cpTipoId.getText());
-            tr.setColab(idc);
+        this.tarefaGlobal.setTitAge(cpTitulo.getText());
+        this.tarefaGlobal.setDesAge(cpDescricao.getText());
         
-        tr.setDataEnt(cpDataEntrega.getText());
-        tr.setTitAge(cpTitulo.getText());
-        tr.setDesAge(cpDescricao.getText());
-
+        //this.tarefaGlobal.setDataEnt(cpDataEntrega.getText());
+        
         //provavelmente tenho q mudar o dao do inserir pq nao ocorre nenhuma mudança na data de criaçao
         //somente na de entrega
         Dao dao = new Dao();
         try {
-            dao.alterar(tr);
-            javax.swing.JOptionPane.showMessageDialog(null, "tarefa Alternada com sucesso !");
+            dao.alterarTarefaColaborador(this.tarefaGlobal);
+            javax.swing.JOptionPane.showMessageDialog(null, "Tarefa alterada com sucesso !");
         } catch (SQLException ex) {
             javax.swing.JOptionPane.showMessageDialog(null, "Falha ao alterar uma Tarefa !");
             Logger.getLogger(PainelCadastEquipe.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
-     
-       private void preencherFormulario(int codigoTarefa) {
-        Dao dao = new Dao();
 
-        try {
-            Tarefa taref = dao.getTarefa(codigoTarefa);
-            
-            
-            int ide = Integer.parseInt(cpTipoId.getText());
-            taref.setEquipe(ide);
-            //cpTipoId.setString(taref.getColab());
-            cpTitulo.setText(taref.getTitAge());
-            cpDescricao.setText(taref.getDesAge());           
-            cpDataEntrega.setText(taref.getDataEnt());
-                     
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "erro ao obter equipes");
-            Logger.getLogger(ListagemEquip.class.getName()).log(Level.SEVERE, TOOL_TIP_TEXT_KEY);
-        }
-
-        this.id = codigoTarefa;
+    private void preencherFormulario(Tarefa tarefa) {
+        cpTitulo.setText(tarefa.getTitAge());
+        cpDescricao.setText(tarefa.getDesAge());
+        cpDataEntrega.setText(tarefa.getDataEnt());
+        this.tarefaGlobal = tarefa;
     }
+
     private void cpTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpTituloActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cpTituloActionPerformed
@@ -318,9 +300,9 @@ public class ListagemTarefaColab extends javax.swing.JPanel {
             Dao dao = new Dao();
 
             try {
-                dao.eliminar(this.id);
+                dao.eliminarTarefaColaborador(this.tarefaGlobal);
                 this.limparTabelaTarefa();
-                
+
                 this.cl.show(this, "painelListagemTarefaColab");
             } catch (SQLException ex) {
                 Logger.getLogger(ListagemTarefaColab.class.getName()).log(Level.SEVERE, null, ex);
@@ -334,9 +316,21 @@ public class ListagemTarefaColab extends javax.swing.JPanel {
         int linha = tblTarefa.getSelectedRow();
 
         if (linha != -1) {
-            String codigo = tblTarefa.getValueAt(linha, 0).toString();
-            int codigoTarefa = Integer.parseInt(codigo);
-            this.preencherFormulario(codigoTarefa);
+            String idColaborador = tblTarefa.getValueAt(linha, 0).toString();
+            String idEquipe = tblTarefa.getValueAt(linha, 5).toString();
+
+            int idColaboradorInt = Integer.parseInt(idColaborador);
+            int idEquipeInt = Integer.parseInt(idEquipe);
+
+            Tarefa trf = new Tarefa();
+            trf.setColab(idColaboradorInt);
+            trf.setTitAge(tblTarefa.getValueAt(linha, 1).toString());
+            trf.setDesAge(tblTarefa.getValueAt(linha, 2).toString());
+            trf.setDataCri(tblTarefa.getValueAt(linha, 3).toString());
+            trf.setDataEnt(tblTarefa.getValueAt(linha, 4).toString());
+            trf.setEquipe(idEquipeInt);
+
+            this.preencherFormulario(trf);
             this.add(painelListagemTarefaColab, "painelListagemTarefa");
             this.cl.show(this, "painelEdiçaoTarefColab");
         }

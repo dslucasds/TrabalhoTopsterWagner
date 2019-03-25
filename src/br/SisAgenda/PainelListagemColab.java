@@ -21,7 +21,7 @@ public class PainelListagemColab extends javax.swing.JPanel {
     public PainelListagemColab() {
         initComponents();
         ComboBoxTipoColab.addItem("Administrador");
-        ComboBoxTipoColab.addItem("Usario");
+        ComboBoxTipoColab.addItem("Usuário");
        
         this.add(PainelListagem, "PainelListagem");
         this.add(PainelEdicaoListagem,"PainelEdicaoListagem");
@@ -242,6 +242,11 @@ public class PainelListagemColab extends javax.swing.JPanel {
         jLabel10.setText("ID da equipe:");
 
         jIdentEqp.setText("(Deixar 0 se não pertencer a nenhuma)");
+        jIdentEqp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jIdentEqpMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout PainelEdicaoListagemLayout = new javax.swing.GroupLayout(PainelEdicaoListagem);
         PainelEdicaoListagem.setLayout(PainelEdicaoListagemLayout);
@@ -455,6 +460,10 @@ public class PainelListagemColab extends javax.swing.JPanel {
 
         }
     }//GEN-LAST:event_btnApagarActionPerformed
+
+    private void jIdentEqpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jIdentEqpMouseClicked
+        jIdentEqp.setText("");
+    }//GEN-LAST:event_jIdentEqpMouseClicked
 
    
 

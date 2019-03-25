@@ -4,7 +4,7 @@ package br.SisAgenda.modelo;
 
 public class Tarefa {
     
-    private int Colab;//vai ser pra setar o id do colaborador e da equipe
+    private int Colab;
     private int Equipe;
     private String titAge;
     private String desAge;

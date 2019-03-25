@@ -423,6 +423,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="(Deixar 0 se n&#xe3;o pertencer a nenhuma)"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jIdentEqpMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

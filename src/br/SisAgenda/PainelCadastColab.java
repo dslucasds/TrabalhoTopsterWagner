@@ -7,6 +7,7 @@ package br.SisAgenda;
 
 import br.SisAgenda.dao.Dao;
 import br.SisAgenda.modelo.Colaborador;
+import com.sun.org.apache.bcel.internal.generic.CPInstruction;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,7 +24,7 @@ public class PainelCadastColab extends javax.swing.JPanel {
     public PainelCadastColab() {
         initComponents();
         ComboBoxTipoColab.addItem("Administrador");
-        ComboBoxTipoColab.addItem("Usario");
+        ComboBoxTipoColab.addItem("Usuário");
         
         jNomeColab.setText("");
         jEndColab.setText("");
@@ -131,6 +132,16 @@ public class PainelCadastColab extends javax.swing.JPanel {
         jLabel10.setText("ID da equipe:");
 
         jIdentEqp.setText("(Deixar 0 se não pertencer a nenhuma)");
+        jIdentEqp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jIdentEqpMouseClicked(evt);
+            }
+        });
+        jIdentEqp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jIdentEqpActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -272,6 +283,14 @@ public class PainelCadastColab extends javax.swing.JPanel {
             Logger.getLogger(PainelCadastEquipe.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButtonCadastActionPerformed
+
+    private void jIdentEqpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jIdentEqpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jIdentEqpActionPerformed
+
+    private void jIdentEqpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jIdentEqpMouseClicked
+        jIdentEqp.setText("");
+    }//GEN-LAST:event_jIdentEqpMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
