@@ -1,5 +1,6 @@
 package Telas;
 
+import javax.swing.JOptionPane;
 import br.SisAgenda.ListagemEquip;
 import br.SisAgenda.ListagemTarefaColab;
 import br.SisAgenda.ListagemTarefaEquip;
@@ -7,18 +8,26 @@ import br.SisAgenda.PainelCadastColab;
 import br.SisAgenda.PainelCadastEquipe;
 import br.SisAgenda.PainelCadastTarefa;
 import br.SisAgenda.PainelListagemColab;
+import br.SisAgenda.dao.Dao;
+import br.SisAgenda.modelo.Colaborador;
 import java.awt.CardLayout;
 import static java.awt.Frame.MAXIMIZED_BOTH;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 public class FramePrincipal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FramePrincipal
-     */
+    private Colaborador colaborador;
     public FramePrincipal() {
         initComponents();
-
+        Welcome.setEnabled(false);
+        jJanelaColab.setEnabled(false);
+        jMenu2.setEnabled(false);
+        jMenu3.setEnabled(false);
+        jMenu1.setEnabled(false);
+        
         PainelCadastColab cadColab = new PainelCadastColab();
         PainelCadastEquipe cadEquipe = new PainelCadastEquipe();
         PainelCadastTarefa cadTaref = new PainelCadastTarefa();
@@ -36,7 +45,6 @@ public class FramePrincipal extends javax.swing.JFrame {
         painelPrincipal.add(lisEquip, "ListagemEquip");
         painelPrincipal.add(lisTaref, "ListagemTarefas");
         painelPrincipal.add(lisTarefEqp, "ListagemTarefasEqp");
-        
 
         CardLayout cl = (CardLayout) painelPrincipal.getLayout();
         cl.show(painelPrincipal, "telaPadrao");
@@ -54,7 +62,15 @@ public class FramePrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         painelPrincipal = new javax.swing.JPanel();
+        PainelLogin = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jCheckUsuario = new javax.swing.JTextField();
+        jButtonEntrar = new javax.swing.JButton();
+        jCheckSenha = new javax.swing.JPasswordField();
+        Welcome = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jJanelaColab = new javax.swing.JMenu();
         jMenuCadCol = new javax.swing.JMenuItem();
@@ -72,8 +88,92 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         painelPrincipal.setLayout(new java.awt.CardLayout());
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/SisAgenda/imgs/hqdefault.jpg"))); // NOI18N
-        painelPrincipal.add(jLabel2, "card2");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setText("Sistema de Agenda de Funcionários");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setText("USUARIO:");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setText("SENHA:");
+
+        jCheckUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckUsuarioActionPerformed(evt);
+            }
+        });
+
+        jButtonEntrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButtonEntrar.setText("ENTRAR");
+        jButtonEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEntrarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PainelLoginLayout = new javax.swing.GroupLayout(PainelLogin);
+        PainelLogin.setLayout(PainelLoginLayout);
+        PainelLoginLayout.setHorizontalGroup(
+            PainelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelLoginLayout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addGroup(PainelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(PainelLoginLayout.createSequentialGroup()
+                        .addGroup(PainelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelLoginLayout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addGroup(PainelLoginLayout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(33, 33, 33)))
+                        .addGroup(PainelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jCheckUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
+                            .addComponent(jButtonEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jCheckSenha))))
+                .addContainerGap(132, Short.MAX_VALUE))
+        );
+        PainelLoginLayout.setVerticalGroup(
+            PainelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelLoginLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(81, 81, 81)
+                .addGroup(PainelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(PainelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jCheckSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(178, Short.MAX_VALUE))
+        );
+
+        painelPrincipal.add(PainelLogin, "card2");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setText("BEM_VINDO MEU CONSAGRADO");
+
+        javax.swing.GroupLayout WelcomeLayout = new javax.swing.GroupLayout(Welcome);
+        Welcome.setLayout(WelcomeLayout);
+        WelcomeLayout.setHorizontalGroup(
+            WelcomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WelcomeLayout.createSequentialGroup()
+                .addContainerGap(117, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(112, 112, 112))
+        );
+        WelcomeLayout.setVerticalGroup(
+            WelcomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(WelcomeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(466, Short.MAX_VALUE))
+        );
+
+        painelPrincipal.add(Welcome, "card3");
 
         jJanelaColab.setText("Colaborador");
 
@@ -169,7 +269,7 @@ public class FramePrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(painelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -216,6 +316,47 @@ public class FramePrincipal extends javax.swing.JFrame {
         cl.show(painelPrincipal, "ListagemTarefasEqp");
     }//GEN-LAST:event_jAgendaEquipesActionPerformed
 
+    private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
+        ChecarColaborador();
+    }//GEN-LAST:event_jButtonEntrarActionPerformed
+
+    private void jCheckUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckUsuarioActionPerformed
+
+    }//GEN-LAST:event_jCheckUsuarioActionPerformed
+
+    private void ChecarColaborador() {
+        Dao col = new Dao();
+
+        try {
+            String LoginCheck = jCheckUsuario.getText();
+            String SenhaCheck = jCheckSenha.getText();
+            
+            this.colaborador = col.getColaborador(LoginCheck, SenhaCheck);
+            
+            if(colaborador != null){//login com sucesso
+                this.colaborador.getTipoUsuario();
+                String tipocolala = this.colaborador.getTipoUsuario();
+                if(tipocolala.equals("Administrador")){
+                    PainelLogin.setEnabled(false);
+                    Welcome.setEnabled(true);
+                    jJanelaColab.setEnabled(true);
+                    jMenu2.setEnabled(true);
+                    jMenu3.setEnabled(true);
+                    jMenu1.setEnabled(true);
+                }else if(tipocolala.equals("usuario")){
+                    Welcome.setEnabled(true);
+                    jMenu3.setEnabled(true);
+                    jMenu1.setEnabled(true);
+                }
+            }else{
+            }          
+        } catch (SQLException ex) {
+            String msg = "Ocorreu um erro ao obter o colaborador do banco de dados!";
+            JOptionPane.showMessageDialog(null, msg);
+            Logger.getLogger(PainelListagemColab.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -249,12 +390,20 @@ public class FramePrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel PainelLogin;
+    private javax.swing.JPanel Welcome;
     private javax.swing.JMenuItem jAddTarefa;
     private javax.swing.JMenuItem jAgendaColab;
     private javax.swing.JMenuItem jAgendaEquipes;
+    private javax.swing.JButton jButtonEntrar;
     private javax.swing.JMenuItem jCadastroEquipe;
+    private javax.swing.JPasswordField jCheckSenha;
+    private javax.swing.JTextField jCheckUsuario;
     private javax.swing.JMenu jJanelaColab;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenuItem jListarColab;
     private javax.swing.JMenuItem jListarEquipe;
     private javax.swing.JMenu jMenu1;

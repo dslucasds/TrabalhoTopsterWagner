@@ -308,7 +308,37 @@ public class Dao extends ConnectionFactory {
         this.con.close();
         return colaborador;
     }
-    
+    /////////////////////////////apagar e colar aq
+        public Colaborador getColaborador(String Login, String Senha) throws SQLException {
+        String sql = "select * from colaborador where loginCol = ? and senhaCol = ?";
+        Colaborador colaborador = null;
+
+        try (PreparedStatement st = this.con.prepareStatement(sql)) {
+            st.setString(1, Login);
+            st.setString(2, Senha);
+            try (ResultSet rs = st.executeQuery()) {
+                if (rs.next()) {
+                    colaborador = new Colaborador();
+                    
+                    colaborador.setIdDoColab(rs.getInt("idCol"));
+                    colaborador.setTipoUsuario(rs.getString("tipoCol"));
+                    colaborador.setNomeColaborador(rs.getString("nomCol"));
+                    colaborador.setLoginColaborador(rs.getString("loginCol"));
+                    colaborador.setSenhaColaborador(rs.getString("senhaCol"));     
+                    colaborador.setEnderecoColaborador(rs.getString("endCol"));
+                    colaborador.setBairroColaborador(rs.getString("baiCol"));
+                    colaborador.setEmailColaborador(rs.getString("emailCol"));
+                    colaborador.setCodEquipe(rs.getString("idEqp"));
+                    
+                }
+            }
+            st.close();
+        }
+
+        this.con.close();
+        return colaborador;
+    }
+    ////////////////////////////////////////////
         public void eliminarColaborador(int idCol) throws SQLException {
 
         String sql = "delete from colaborador where idCol = ?";
@@ -322,6 +352,7 @@ public class Dao extends ConnectionFactory {
         this.con.close();
 
     }
+    //ate aaq/////////////////////////////////
 
     //INSERIR COLABORADOR//
     public void inserir(Colaborador col) throws SQLException {
