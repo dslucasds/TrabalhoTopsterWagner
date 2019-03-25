@@ -1,6 +1,7 @@
 package br.SisAgenda;
 
 import br.SisAgenda.dao.Dao;
+import br.SisAgenda.modelo.Equipe;
 import br.SisAgenda.modelo.Tarefa;
 import java.awt.CardLayout;
 import java.sql.SQLException;
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static javax.swing.JComponent.TOOL_TIP_TEXT_KEY;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -26,7 +28,7 @@ public class ListagemTarefaColab extends javax.swing.JPanel {
         this.cl = (CardLayout) this.getLayout();
         this.cl.show(this, "painelListagemTarefa");
 
-        this.popularTabelaTarefa();
+        //this.popularTabelaTarefa();
 
     }
 
@@ -92,9 +94,9 @@ public class ListagemTarefaColab extends javax.swing.JPanel {
 
         setLayout(new java.awt.CardLayout());
 
-        jScrollPane1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jScrollPane1MouseClicked(evt);
+        painelListagemTarefaColab.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                painelListagemTarefaColabComponentShown(evt);
             }
         });
 
@@ -278,7 +280,28 @@ public class ListagemTarefaColab extends javax.swing.JPanel {
             Logger.getLogger(PainelCadastEquipe.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
+     
+       private void preencherFormulario(int codigoTarefa) {
+        Dao dao = new Dao();
 
+        try {
+            Tarefa taref = dao.getTarefa(codigoTarefa);
+            
+            
+            int ide = Integer.parseInt(cpTipoId.getText());
+            taref.setEquipe(ide);
+            //cpTipoId.setString(taref.getColab());
+            cpTitulo.setText(taref.getTitAge());
+            cpDescricao.setText(taref.getDesAge());           
+            cpDataEntrega.setText(taref.getDataEnt());
+                     
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "erro ao obter equipes");
+            Logger.getLogger(ListagemEquip.class.getName()).log(Level.SEVERE, TOOL_TIP_TEXT_KEY);
+        }
+
+        this.id = codigoTarefa;
+    }
     private void cpTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cpTituloActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cpTituloActionPerformed
@@ -289,7 +312,7 @@ public class ListagemTarefaColab extends javax.swing.JPanel {
 
     private void ApagarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApagarBtnActionPerformed
         Object[] options = {"Sim", "Não"};
-        int opcaoSelecionada = JOptionPane.showOptionDialog(null, "Deseja realmente eliminar esta equipe ?", "Atenção!", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+        int opcaoSelecionada = JOptionPane.showOptionDialog(null, "Deseja realmente eliminar esta tarefa ?", "Atenção!", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
 
         if (opcaoSelecionada == 0) {
             Dao dao = new Dao();
@@ -306,23 +329,22 @@ public class ListagemTarefaColab extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_ApagarBtnActionPerformed
 
-    /*
-    private void jScrollPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jScrollPane1MouseClicked
-*/
+    /**/
     private void tblTarefaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTarefaMouseClicked
-        int linha = painelListagemTarefaColab.getSelectedRow();
+        int linha = tblTarefa.getSelectedRow();
 
         if (linha != -1) {
-            String codigo = painelListagemTarefaColab.getValueAt(linha, 0).toStrings();
-            int codigoEquipe = Integer.parseInt(codigo);
-            this.preencherFormulario(codigoEquipe);
-            this.add(painelListagemTarefaColab, "painelListagem");
-            this.cl.show(this, "painelEdicao");
-
+            String codigo = tblTarefa.getValueAt(linha, 0).toString();
+            int codigoTarefa = Integer.parseInt(codigo);
+            this.preencherFormulario(codigoTarefa);
+            this.add(painelListagemTarefaColab, "painelListagemTarefa");
+            this.cl.show(this, "painelEdiçaoTarefColab");
         }
     }//GEN-LAST:event_tblTarefaMouseClicked
+
+    private void painelListagemTarefaColabComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_painelListagemTarefaColabComponentShown
+        this.popularTabelaTarefa();
+    }//GEN-LAST:event_painelListagemTarefaColabComponentShown
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

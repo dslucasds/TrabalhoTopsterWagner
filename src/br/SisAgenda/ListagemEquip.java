@@ -273,9 +273,7 @@ public class ListagemEquip extends javax.swing.JPanel {
             this.preencherFormulario(codigoEquipe);
             this.add(painelListagem, "painelListagem");
             this.cl.show(this, "painelEdicao");
-
         }
-
     }//GEN-LAST:event_tblEquipeMouseClicked
 
     private void btnApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApagarActionPerformed
