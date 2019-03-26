@@ -195,7 +195,7 @@ public class Dao extends ConnectionFactory {
 
         String sql = "insert into agenda "
                 + "(dataCri, dataEnt, titAge, desAge, "
-                + "idEqp, idCol) "
+                + "idEqp, idCol)"
                 + "values (?, ?, ?, ?, ?, ?);";
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
@@ -241,8 +241,8 @@ public class Dao extends ConnectionFactory {
          public void alterarTarefaEquipe (Tarefa trf) throws SQLException {
 
        
-        String sql = "update agenda set dataEnt = ?, titAge = ?"
-                + "desAge = ? where idEqp = ? and idCol = ?, and dataCri = ?;";
+        String sql = "update agenda set dataEnt = ?, titAge = ?,"
+                + "desAge = ? where idEqp = ? and idCol = ? and dataCri = ?;";
 
         try (PreparedStatement st = this.con.prepareStatement(sql)) {
 
@@ -250,6 +250,7 @@ public class Dao extends ConnectionFactory {
             st.setString(2, trf.getTitAge());
             st.setString(3, trf.getDesAge());
             
+           
             st.setInt(4, trf.getEquipe());
             st.setInt(5, trf.getColab());
             st.setString(6, trf.getDataCri());

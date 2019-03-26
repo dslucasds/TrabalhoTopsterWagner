@@ -87,8 +87,6 @@ public class ListagemTarefaColab extends javax.swing.JPanel {
         cpTitulo = new javax.swing.JTextField();
         cpDescricao = new javax.swing.JTextField();
         cpDataEntrega = new javax.swing.JFormattedTextField();
-        jLabel2 = new javax.swing.JLabel();
-        cpTipoId = new javax.swing.JTextField();
         ApagarBtn = new javax.swing.JButton();
 
         setLayout(new java.awt.CardLayout());
@@ -128,6 +126,9 @@ public class ListagemTarefaColab extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tblTarefa);
+        if (tblTarefa.getColumnModel().getColumnCount() > 0) {
+            tblTarefa.getColumnModel().getColumn(5).setHeaderValue("Id Equipe");
+        }
 
         javax.swing.GroupLayout painelListagemTarefaColabLayout = new javax.swing.GroupLayout(painelListagemTarefaColab);
         painelListagemTarefaColab.setLayout(painelListagemTarefaColabLayout);
@@ -182,9 +183,6 @@ public class ListagemTarefaColab extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("ID:");
-
         ApagarBtn.setText("APAGAR");
         ApagarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -206,14 +204,12 @@ public class ListagemTarefaColab extends javax.swing.JPanel {
                         .addContainerGap()
                         .addGroup(painelEdiçãoAgendaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblDescricao)
-                            .addComponent(jLabel2)
                             .addComponent(lblTitulo)))
                     .addComponent(lblDataFinal))
                 .addGap(32, 32, 32)
                 .addGroup(painelEdiçãoAgendaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(painelEdiçãoAgendaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(cpTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cpTipoId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(cpDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(painelEdiçãoAgendaColabLayout.createSequentialGroup()
                         .addGroup(painelEdiçãoAgendaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -231,11 +227,7 @@ public class ListagemTarefaColab extends javax.swing.JPanel {
             .addGroup(painelEdiçãoAgendaColabLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblTituloAdicionarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelEdiçãoAgendaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(cpTipoId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(29, 29, 29)
                 .addGroup(painelEdiçãoAgendaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cpTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE))
@@ -247,7 +239,7 @@ public class ListagemTarefaColab extends javax.swing.JPanel {
                 .addGroup(painelEdiçãoAgendaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDataFinal)
                     .addComponent(cpDataEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(painelEdiçãoAgendaColabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ApagarBtn, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnSalvar, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -346,9 +338,7 @@ public class ListagemTarefaColab extends javax.swing.JPanel {
     private javax.swing.JButton btnSalvar;
     private javax.swing.JFormattedTextField cpDataEntrega;
     private javax.swing.JTextField cpDescricao;
-    private javax.swing.JTextField cpTipoId;
     private javax.swing.JTextField cpTitulo;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDataFinal;
     private javax.swing.JLabel lblDescricao;

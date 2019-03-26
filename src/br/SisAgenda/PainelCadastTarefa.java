@@ -208,7 +208,7 @@ public class PainelCadastTarefa extends javax.swing.JPanel {
             javax.swing.JOptionPane.showMessageDialog(null, "tarefa inserida com sucesso !");
         } catch (SQLException ex) {
             javax.swing.JOptionPane.showMessageDialog(null, "Falha ao inserir uma Tarefa !");
-            Logger.getLogger(PainelCadastEquipe.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PainelCadastTarefa.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 

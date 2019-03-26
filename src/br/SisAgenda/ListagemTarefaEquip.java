@@ -43,7 +43,7 @@ public class ListagemTarefaEquip extends javax.swing.JPanel {
                 Tarefa t = listaTarefa.get(i);
                 if (t.getColab() == 0) {
                     lista.add(new Object[]{t.getEquipe(), t.getTitAge(),
-                        t.getDesAge(), t.getDataCri(), t.getDataEnt(),});
+                        t.getDesAge(), t.getDataCri(), t.getDataEnt(),t.getColab()});
                 }
             }
 
@@ -80,8 +80,6 @@ public class ListagemTarefaEquip extends javax.swing.JPanel {
         cpTitulo = new javax.swing.JTextField();
         cpDescricao = new javax.swing.JTextField();
         cpDataEntrega = new javax.swing.JFormattedTextField();
-        jLabel2 = new javax.swing.JLabel();
-        cpTipoId = new javax.swing.JTextField();
         btnApagar = new javax.swing.JButton();
 
         setLayout(new java.awt.CardLayout());
@@ -91,14 +89,14 @@ public class ListagemTarefaEquip extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID Equipe", "Titulo", "Descrição", "Data Inicial", "Data de Entrega"
+                "ID Equipe", "Titulo", "Descrição", "Data Inicial", "Data de Entrega", "ID Colaborador"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -170,9 +168,6 @@ public class ListagemTarefaEquip extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("ID:");
-
         btnApagar.setText("APAGAR");
         btnApagar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -184,40 +179,40 @@ public class ListagemTarefaEquip extends javax.swing.JPanel {
         painelEdiçãoAgendaEquip.setLayout(painelEdiçãoAgendaEquipLayout);
         painelEdiçãoAgendaEquipLayout.setHorizontalGroup(
             painelEdiçãoAgendaEquipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelEdiçãoAgendaEquipLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(painelEdiçãoAgendaEquipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(lblTitulo)
-                    .addComponent(lblDescricao))
-                .addContainerGap(320, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelEdiçãoAgendaEquipLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(lblDataFinal)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(painelEdiçãoAgendaEquipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cpTipoId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTituloAdicionarTarefa)
                     .addComponent(cpTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cpDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cpDataEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelEdiçãoAgendaEquipLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSalvar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnApagar)
-                .addGap(46, 46, 46))
+            .addGroup(painelEdiçãoAgendaEquipLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(painelEdiçãoAgendaEquipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelEdiçãoAgendaEquipLayout.createSequentialGroup()
+                        .addGroup(painelEdiçãoAgendaEquipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTitulo)
+                            .addComponent(lblDescricao))
+                        .addContainerGap(320, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelEdiçãoAgendaEquipLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnSalvar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnApagar)
+                        .addGap(46, 46, 46))))
+            .addGroup(painelEdiçãoAgendaEquipLayout.createSequentialGroup()
+                .addGap(87, 87, 87)
+                .addComponent(lblTituloAdicionarTarefa)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         painelEdiçãoAgendaEquipLayout.setVerticalGroup(
             painelEdiçãoAgendaEquipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelEdiçãoAgendaEquipLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblTituloAdicionarTarefa)
-                .addGap(8, 8, 8)
-                .addGroup(painelEdiçãoAgendaEquipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(cpTipoId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(36, 36, 36)
                 .addGroup(painelEdiçãoAgendaEquipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTitulo)
                     .addComponent(cpTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -233,13 +228,15 @@ public class ListagemTarefaEquip extends javax.swing.JPanel {
                 .addGroup(painelEdiçãoAgendaEquipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
                     .addComponent(btnApagar))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         add(painelEdiçãoAgendaEquip, "card3");
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        String QualTipoTarefa = "Equipe";
+        
         this.tarefaGlobal.setTitAge(cpTitulo.getText());
         this.tarefaGlobal.setDesAge(cpDescricao.getText());
         
@@ -249,7 +246,7 @@ public class ListagemTarefaEquip extends javax.swing.JPanel {
         //somente na de entrega
         Dao dao = new Dao();
         try {
-            dao.alterarTarefaColaborador(this.tarefaGlobal);
+            dao.alterarTarefaEquipe(this.tarefaGlobal);
             javax.swing.JOptionPane.showMessageDialog(null, "Tarefa alterada com sucesso !");
         } catch (SQLException ex) {
             javax.swing.JOptionPane.showMessageDialog(null, "Falha ao alterar uma Tarefa !");
@@ -286,7 +283,7 @@ public class ListagemTarefaEquip extends javax.swing.JPanel {
 
                 this.cl.show(this, "painelListagemTarefaEquip");
             } catch (SQLException ex) {
-                Logger.getLogger(ListagemTarefaColab.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ListagemTarefaEquip.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         }
@@ -294,24 +291,24 @@ public class ListagemTarefaEquip extends javax.swing.JPanel {
 
     private void TblTarefEqpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblTarefEqpMouseClicked
         
-        //AJUSTAR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
+        
         
         int linha = TblTarefEqp.getSelectedRow();
 
         if (linha != -1) {
-            String idColaborador = TblTarefEqp.getValueAt(linha, 0).toString();
-            String idEquipe = TblTarefEqp.getValueAt(linha, 5).toString();
+            String idColaborador = TblTarefEqp.getValueAt(linha, 5).toString();
+            String idEquipe = TblTarefEqp.getValueAt(linha, 0).toString();
 
             int idColaboradorInt = Integer.parseInt(idColaborador);
             int idEquipeInt = Integer.parseInt(idEquipe);
 
             Tarefa trf = new Tarefa();
-            trf.setColab(idColaboradorInt);
+            trf.setEquipe(idEquipeInt);
             trf.setTitAge(TblTarefEqp.getValueAt(linha, 1).toString());
             trf.setDesAge(TblTarefEqp.getValueAt(linha, 2).toString());
             trf.setDataCri(TblTarefEqp.getValueAt(linha, 3).toString());
             trf.setDataEnt(TblTarefEqp.getValueAt(linha, 4).toString());
-            trf.setEquipe(idEquipeInt);
+            trf.setColab(idColaboradorInt);
 
             this.preencherFormulario(trf);
             this.add(painelListagemTarefaEqp, "painelListagemTarefaEqp");
@@ -330,9 +327,7 @@ public class ListagemTarefaEquip extends javax.swing.JPanel {
     private javax.swing.JButton btnSalvar;
     private javax.swing.JFormattedTextField cpDataEntrega;
     private javax.swing.JTextField cpDescricao;
-    private javax.swing.JTextField cpTipoId;
     private javax.swing.JTextField cpTitulo;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblDataFinal;
     private javax.swing.JLabel lblDescricao;
