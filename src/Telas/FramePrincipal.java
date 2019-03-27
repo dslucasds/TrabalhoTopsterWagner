@@ -22,6 +22,7 @@ public class FramePrincipal extends javax.swing.JFrame {
     private Colaborador colaborador;
     public FramePrincipal() {
         initComponents();
+        //esse Welcome aq eh o painel de bem vindo ai eu ponho ele na frente do login porem destaivo ele pra q quando ele for ativadoe ele sempre fique na frente
         Welcome.setEnabled(false);
         jJanelaColab.setEnabled(false);
         jMenu2.setEnabled(false);
@@ -62,6 +63,8 @@ public class FramePrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         painelPrincipal = new javax.swing.JPanel();
+        Welcome = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         PainelLogin = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -69,8 +72,6 @@ public class FramePrincipal extends javax.swing.JFrame {
         jCheckUsuario = new javax.swing.JTextField();
         jButtonEntrar = new javax.swing.JButton();
         jCheckSenha = new javax.swing.JPasswordField();
-        Welcome = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jJanelaColab = new javax.swing.JMenu();
         jMenuCadCol = new javax.swing.JMenuItem();
@@ -87,6 +88,28 @@ public class FramePrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         painelPrincipal.setLayout(new java.awt.CardLayout());
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setText("BEM_VINDO MEU CONSAGRADO");
+
+        javax.swing.GroupLayout WelcomeLayout = new javax.swing.GroupLayout(Welcome);
+        Welcome.setLayout(WelcomeLayout);
+        WelcomeLayout.setHorizontalGroup(
+            WelcomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WelcomeLayout.createSequentialGroup()
+                .addContainerGap(117, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(112, 112, 112))
+        );
+        WelcomeLayout.setVerticalGroup(
+            WelcomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(WelcomeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(466, Short.MAX_VALUE))
+        );
+
+        painelPrincipal.add(Welcome, "card3");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Sistema de Agenda de Funcionários");
@@ -152,28 +175,6 @@ public class FramePrincipal extends javax.swing.JFrame {
         );
 
         painelPrincipal.add(PainelLogin, "card2");
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel4.setText("BEM_VINDO MEU CONSAGRADO");
-
-        javax.swing.GroupLayout WelcomeLayout = new javax.swing.GroupLayout(Welcome);
-        Welcome.setLayout(WelcomeLayout);
-        WelcomeLayout.setHorizontalGroup(
-            WelcomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WelcomeLayout.createSequentialGroup()
-                .addContainerGap(117, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(112, 112, 112))
-        );
-        WelcomeLayout.setVerticalGroup(
-            WelcomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(WelcomeLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(466, Short.MAX_VALUE))
-        );
-
-        painelPrincipal.add(Welcome, "card3");
 
         jJanelaColab.setText("Colaborador");
 
